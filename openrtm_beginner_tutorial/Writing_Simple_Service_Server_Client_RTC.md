@@ -377,7 +377,7 @@ int main (int argc, char** argv)
 ```
 おまじないだと思っておけばよい.
 
-## Build (executable)
+### 1.5 Build (executable)
 CMakeLists.txtに以下を書くことで、`ServerComp`が生成される
 ```
 rtmbuild_add_executable(ServerComp ServerComp.cpp)
@@ -642,7 +642,7 @@ int main (int argc, char** argv)
 ```
 おまじないだと思っておけばよい.
 
-## Build (executable)
+### 2.5 Build (executable)
 CMakeLists.txtに以下を書くことで、`ClientComp`が生成される
 ```
 rtmbuild_add_executable(ClientComp ClientComp.cpp)

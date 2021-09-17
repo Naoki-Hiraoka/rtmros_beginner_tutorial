@@ -278,7 +278,7 @@ int main (int argc, char** argv)
 ```
 おまじないだと思っておけばよい.
 
-## Build (executable)
+### 1.5 Build (executable)
 CMakeLists.txtに以下を書くことで、`PublisherComp`が生成される
 ```
 rtmbuild_add_executable(PublisherComp PublisherComp.cpp)
@@ -521,7 +521,7 @@ int main (int argc, char** argv)
 ```
 おまじないだと思っておけばよい.
 
-## Build (executable)
+### 2.5 Build (executable)
 CMakeLists.txtに以下を書くことで、`SubscriberComp`が生成される
 ```
 rtmbuild_add_executable(SubscriberComp SubscriberComp.cpp)
