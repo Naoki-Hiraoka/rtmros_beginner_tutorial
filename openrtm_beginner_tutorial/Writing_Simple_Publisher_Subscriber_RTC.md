@@ -131,6 +131,8 @@ public:
 
 [公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/rtcdevelflow)より引用
 
+| 関数名 | 説明 |
+| ---- | ---- |
 | onInitialize | 初期化処理、コンポーネントライフサイクルの開始時に一度だけ呼ばれる。 |
 | onActivated | 非アクティブ状態からアクティブ化されるとき1度だけ呼ばれる。 |
 | onExecute | アクティブ状態時に周期的に呼ばれる。 |
