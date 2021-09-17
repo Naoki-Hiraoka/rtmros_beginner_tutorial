@@ -130,6 +130,7 @@ public:
 `RTC::DataFlowComponentBase`クラスの下記のメンバ関数をオーバーライドすることで、独自の処理を実装できる.
 
 [公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/rtcdevelflow)より引用
+
 | onInitialize | 初期化処理、コンポーネントライフサイクルの開始時に一度だけ呼ばれる。 |
 | onActivated | 非アクティブ状態からアクティブ化されるとき1度だけ呼ばれる。 |
 | onExecute | アクティブ状態時に周期的に呼ばれる。 |
