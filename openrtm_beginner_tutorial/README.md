@@ -29,6 +29,7 @@ subscription type
 
 periodoc rate
 execution context
+manager
 python interface
 rtcd
 
