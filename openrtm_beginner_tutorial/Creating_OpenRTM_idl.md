@@ -36,6 +36,7 @@ module MySample
 
 変数として利用可能なデータ型は、以下の通り
 - 基本型 ([公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/dataport_advanced)より改変)
+
 | 型 | 意味 | 宣言例 |
 | ---- | ---- | ---- |
 | short | short型整数 | short shortVariable; |
