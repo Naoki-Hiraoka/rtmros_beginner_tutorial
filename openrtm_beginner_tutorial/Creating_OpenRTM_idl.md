@@ -1,4 +1,5 @@
 # Creating OpenRTM idl
+サンプルコードは[sample_idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_idl)にある.
 
 ## 1. Introduction to idl
 

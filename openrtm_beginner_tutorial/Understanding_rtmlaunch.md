@@ -1,4 +1,5 @@
 # Understanding rtmlaunch
+サンプルコードは[sample_rtmlaunch](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_rtmlaunch)にある
 
 ## 1. Using rtmlaunch
 
