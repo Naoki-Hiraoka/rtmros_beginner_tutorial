@@ -1,0 +1,12 @@
+#include "BasicDataType.idl"
+
+module MySample
+{
+  struct MyData
+  {
+    RTC::Time tm;
+    short shortVariable;
+    long longVariable;
+    sequence<double> data;
+  };
+};

@@ -18,4 +18,10 @@ ROSのチュートリアルを終えていることを想定している.
 
 7. [Understanding rtmlaunch](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Understanding_rtmlaunch.md)
 
+8. [Creating OpenRTM idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Creating_OpenRTM_idl.md)
+
+9. [Writing Simple Publisher Subscriber RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Publisher_Subscriber_RTC.md)
+
+オリジナル方のrtprint
 subscription type
+ROSではサービスコール単位で利用していたが、OpenRTMではインターフェース単位で利用する。

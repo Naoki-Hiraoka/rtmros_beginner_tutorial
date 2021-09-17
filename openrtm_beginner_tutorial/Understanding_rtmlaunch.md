@@ -101,7 +101,16 @@ RTCTREE_NANESERVERS=localhost:2809
 
 各引数の意味は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/dataport)参照
 
-### 2.5 rtmlaunching
+### 2.5 check connection/activation
+
+`rtmlaunch.py`は、10秒おきに`<rtactivate>`タグに設定されたコンポーネントの実行状態をチェックし、実行中で無ければ実行中にする. 同様に、10秒おきに`<rtconnect>`タグに設定されたポートの接続状態をチェックし、接続されて無ければ接続にする.
+
+環境変数`RTC_CONNECTION_CHECK_ONCE`をセットすると, このチェックを行わない.
+```
+RTC_CONNECTION_CHECK_ONCE=true
+```
+
+### 2.6 rtmlaunching
 
 以下のコマンドで実行できる.
 ```bash
