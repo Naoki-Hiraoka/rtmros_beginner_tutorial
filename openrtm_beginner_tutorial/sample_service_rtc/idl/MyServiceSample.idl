@@ -1,0 +1,14 @@
+#include "BasicDataType.idl"
+
+module MySample
+{
+  interface MyOriginalService
+  {
+    long addTwoInts(in long a, in long b);
+
+    boolean addTwoTime(in RTC::Time a, in RTC::Time b, out RTC::Time sum);
+
+    boolean addTwoTimedDoubleSeq(in RTC::TimedDoubleSeq a, in RTC::TimedDoubleSeq b, out RTC::TimedDoubleSeq sum);
+
+  };
+};

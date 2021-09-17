@@ -110,3 +110,5 @@ rtmbuild_genidl()
 catkin build sample_idl
 ```
 CORBAのSkelやStubが生成される.
+
+なお、独自に定義した型を`rtprint`で表示しようとするとうまくいかない場合がある.

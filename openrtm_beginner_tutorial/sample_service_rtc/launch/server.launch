@@ -1,0 +1,12 @@
+<launch>
+  <arg name="openrtm_args" value='-o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc" ' />
+
+  <!-- RTC SeqIn/SeqOut sample -->
+  <node name="server" pkg="sample_service_rtc" type="ServerComp" args='$(arg openrtm_args)' output="screen"/>
+
+  <!-- BEGIN:openrtm connection -->
+  <node name="rtmlaunch_py" pkg="openrtm_tools" type="rtmlaunch.py"
+        args="$(find sample_service_rtc)/launch/server.launch" />
+  <rtactivate component="Server0.rtc" />
+  <!-- END:openrtm connection -->
+</launch>

@@ -1,6 +1,9 @@
-# Writing Publisher RTC
+# Writing Simple Publisher Subscriber RTC
 
-## 1.1 The Code
+サンプルコードは[sample_io_rtc](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc)にある.
+
+## 1 Writing Publisher RTC
+### 1.1 The Code
 
 [Publisher.h](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc/rtc/Publisher/Publisher.h)
 ```c++
@@ -90,7 +93,7 @@ extern "C"{
 };
 ```
 
-## 1.2 The Code Explained
+### 1.2 The Code Explained
 
 ROSとは異なり、RTコンポーネントのプログラムにはmain関数が無く、クラスとして定義する. ([ROS2](https://docs.ros.org/en/foxy/Tutorials/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html)と似ている)
 
@@ -157,7 +160,7 @@ Publisher::Publisher(RTC::Manager* manager):
 {
 }
 ```
-`m_dataOut`のコンストラクタで`m_data`に対応付けしている. これによって、`m_dataOut`は`m_data`の中身を読んでportから出力するようになる.
+`m_dataOut`のコンストラクタで`m_data`に対応付けしている. これによって、`m_dataOut`は`m_data`の中身を読んでportから出力するようになる. また、ポート名を"chatter"に指定している.
 
 ```c++
 RTC::ReturnCode_t Publisher::onInitialize(){
@@ -166,7 +169,7 @@ RTC::ReturnCode_t Publisher::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-このRTコンポーネントに"chatter"という名前の出力ポートを生成し、`m_dataOut`と対応付けしている.
+このRTコンポーネントに実際に出力ポートを生成し、`m_dataOut`と対応付けしている.
 
 シーケンス型は`length`関数でサイズを変更できる.
 
@@ -217,7 +220,7 @@ extern "C"{
 ```
 ファクトリー関数を設定している. また、このRTコンポーネントのプロパティを設定している.
 
-## 1.3 Build
+### 1.3 Build
 
 CMakeLists.txtに以下を書くことで、共有ライブラリ`Publisher.so`が生成される.
 ```
@@ -228,7 +231,7 @@ target_link_libraries(Publisher ${catkin_LIBRARIES})
 set_target_properties(Publisher PROPERTIES PREFIX "") # libPublisher.so -> Publisher.so
 ```
 
-## 1.4 The Code (executable)
+### 1.4 The Code (executable)
 [PublisherComp.cpp](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc/rtc/Publisher/PublisherComp.cpp)
 ```
 #include <rtm/Manager.h>
@@ -270,18 +273,19 @@ int main (int argc, char** argv)
   return 0;
 }
 ```
+おまじないだと思っておけばよい.
 
 ## Build (executable)
-CMakeLists.txtに以下を書く
+CMakeLists.txtに以下を書くことで、`PublisherComp`が生成される
 ```
 rtmbuild_add_executable(PublisherComp PublisherComp.cpp)
 target_link_libraries(PublisherComp Publisher)
 ```
 先に生成した`Publisher.so`をリンクしている
 
-# 2. Writing Subscriber RTC
+## 2. Writing Subscriber RTC
 
-## 2.1 The Code
+### 2.1 The Code
 [Subscriber.h](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc/rtc/Subscriber/Subscriber.h)
 ```c++
 #ifndef Subscriber_H
@@ -364,7 +368,7 @@ extern "C"{
 };
 ```
 
-## 2.2 The Code Explained
+### 2.2 The Code Explained
 
 Publisherと同様である.
 
@@ -388,7 +392,7 @@ public:
 };
 ```
 
-`RTC::DataFlowComponentBase`クラスの下記のメンバ関数をオーバーライドすることで、独自の処理を実装できる. ここでは、コンポーネント生成時に一度だけ呼ばれる`onInitialize`と、アクティブ状態時に周期的に呼ばれる`onExecute`をオーバーライドしている.
+`RTC::DataFlowComponentBase`クラスのメンバ関数をオーバーライドすることで、独自の処理を実装できる. ここでは、コンポーネント生成時に一度だけ呼ばれる`onInitialize`と、アクティブ状態時に周期的に呼ばれる`onExecute`をオーバーライドしている.
 
 ```c++
 extern "C"
@@ -396,7 +400,7 @@ extern "C"
   void SubscriberInit(RTC::Manager* manager);
 };
 ```
-このプラグインをロードしたときにfactory関数を登録するための関数である
+このプラグインをロードしたときにfactory関数を登録するための関数であるw
 
 ```c++
 Subscriber::Subscriber(RTC::Manager* manager):
@@ -459,7 +463,7 @@ extern "C"{
 ```
 ファクトリー関数を設定している. また、このRTコンポーネントのプロパティを設定している.
 
-## 2.3 Build
+### 2.3 Build
 
 CMakeLists.txtに以下を書くことで、共有ライブラリ`Subscriber.so`が生成される.
 ```
@@ -470,9 +474,9 @@ target_link_libraries(Subscriber ${catkin_LIBRARIES})
 set_target_properties(Subscriber PROPERTIES PREFIX "") # libSubscriber.so -> Subscriber.so
 ```
 
-## 2.4 The Code (executable)
+### 2.4 The Code (executable)
 [SubscriberComp.cpp](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc/rtc/Publisher/SubscriberComp.cpp)
-```
+```c++
 #include <rtm/Manager.h>
 #include "Subscriber.h"
 
@@ -512,18 +516,19 @@ int main (int argc, char** argv)
   return 0;
 }
 ```
+おまじないだと思っておけばよい.
 
 ## Build (executable)
-CMakeLists.txtに以下を書く
+CMakeLists.txtに以下を書くことで、`SubscriberComp`が生成される
 ```
 rtmbuild_add_executable(SubscriberComp SubscriberComp.cpp)
 target_link_libraries(SubscriberComp Subscriber)
 ```
 先に生成した`Subscriber.so`をリンクしている
 
-# 3 Build and Execute
+## 3 Build and Execute
 
-## 3.1 Build
+### 3.1 Build
 上記を行ったものが[sample_io_rtc](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc)にある.
 
 以下のスクリプトでビルドできる
@@ -531,7 +536,7 @@ target_link_libraries(SubscriberComp Subscriber)
 catkin build sample_io_rtc
 ```
 
-## 3.2 Execute
+### 3.2 Execute
 ターミナルで次を実行
 ```
 rtmlaunch sample_io_rtc subscriber.launch

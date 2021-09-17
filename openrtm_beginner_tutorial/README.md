@@ -22,6 +22,17 @@ ROSのチュートリアルを終えていることを想定している.
 
 9. [Writing Simple Publisher Subscriber RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Publisher_Subscriber_RTC.md)
 
-オリジナル方のrtprint
+10. [Writing Simple Service Server Client RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Service_Server_Client_RTC.md)
+
+
 subscription type
-ROSではサービスコール単位で利用していたが、OpenRTMではインターフェース単位で利用する。
+
+periodoc rate
+execution context
+python interface
+rtcd
+
+rosnode
+ros_bridge
+
+hrpsys
