@@ -18,7 +18,7 @@ module MySample
 };
 ```
 
-## Wrinting Server RTC
+## 1. Wrinting Server RTC
 
 ### 1.1 The Code
 
