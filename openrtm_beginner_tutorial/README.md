@@ -30,11 +30,6 @@ ROSのチュートリアルを終えていることを想定している.
 
 13. [Creating Service ROS Bridge Automatically](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Creating_Service_ROS_Bridge_Automatically.md)
 
-manager
-python interface
-rtcd execution context
+14. [Understanding Manager and rtcd](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Understanding_Manager_and_rtcd.md)
 
-rosnode
-ros_bridge
-
-hrpsys
+15. [Understanding RTC Serial Execution](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Understanding_RTC_Serial_Execution.md)

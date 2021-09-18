@@ -4,9 +4,9 @@
 
 `rtmbuild`には、`idl`で定義されたインタフェースを読んで、ROSのサービス型を自動生成し、さらに、
 
-ROSのサービスサーバーノードで、ROSのクライアントからサービスコールが呼ばれると内部でOpenRTMのサービスサーバーにOpenRTMのサービスコールをして、結果をROSのクライアントに返すノードのプログラムを自動で生成する機能がある.
+ROSのサービスサーバーとして機能し、ROSのクライアントからサービスコールが呼ばれると内部でOpenRTMのサービスサーバーにOpenRTMのサービスコールをして、結果をROSのクライアントに返すノードのプログラムを自動で生成する機能がある.
 
-Service Client(ROS node) `--[ROS Service Call]->` ServiceBridge `--[OpenRTM Service Call]->` Service Server(RTC)
+Service Client(ROS node) `--[ROS Service Call]->` ServiceBridge(Automatically Generated) `--[OpenRTM Service Call]->` Service Server(RTC)
 
 サンプルコードは[sample_service_bridge](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_service_bridge)にある.
 
