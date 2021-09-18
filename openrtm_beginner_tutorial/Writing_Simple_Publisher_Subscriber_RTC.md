@@ -175,7 +175,7 @@ RTC::ReturnCode_t Publisher::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-このRTコンポーネントに実際に出力ポートを生成し、`m_dataOut`と対応付けしている.
+`addOutPort`でこのRTコンポーネントに実際に出力ポートを生成し、`m_dataOut`と対応付けしている. `addOutPort`の第一引数`chatter`は単なる名前であり、何を与えても実用上あまり重要ではない.
 
 シーケンス型は`length`関数でサイズを変更できる.
 
@@ -417,7 +417,7 @@ Subscriber::Subscriber(RTC::Manager* manager):
 {
 }
 ```
-`m_dataIn`のコンストラクタで`m_data`に対応付けしている. これによって、`m_dataIn`はportから受け取ったデータを`m_data`に書き込むようになる.
+`m_dataIn`のコンストラクタで`m_data`に対応付けしている. これによって、`m_dataIn`はportから受け取ったデータを`m_data`に書き込むようになる. また、ポート名を`listener`と設定している.
 
 ```c++
 RTC::ReturnCode_t Subscriber::onInitialize(){
@@ -425,7 +425,7 @@ RTC::ReturnCode_t Subscriber::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-このRTコンポーネントに"listener"という名前の入力ポートを生成し、`m_dataIn`と対応付けしている.
+`addInport`でこのRTコンポーネントに"listener"という名前の入力ポートを生成し、`m_dataIn`と対応付けしている. `addInPort`の第一引数`listener`は単なる名前であり、何を与えても実用上あまり重要ではない.
 
 ```c++
 RTC::ReturnCode_t Subscriber::onExecute(RTC::UniqueId ec_id){

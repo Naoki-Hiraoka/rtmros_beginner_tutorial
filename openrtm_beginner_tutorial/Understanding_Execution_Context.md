@@ -14,6 +14,7 @@ RTコンポーネントが生成されると, 実行コンテキストが生成�
 
 実行時に引数で`-o "exec_cxt.periodic.rate:<周期>"`を与えると, コンポーネントが`exec_cxt.periodic.rate`にセットした値の周期で実行されるようになる.
 
+## 2.1 sample1 (1hz)
 [publisher_1hz.launch](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_ec/launch/publisher_1hz.launch)では、`-o "exec_cxt.periodic.rate:1"`を与えている. 以下を実行するとサンプルを動かせる.
 ```
 cakin build sample_ec
@@ -21,6 +22,7 @@ rtmlaunch sample_ec publisher_1hz.launch
 ```
 1hzおきに出力が出てくるのが分かる.
 
+## 2.1 sample2 (10hz)
 [publisher_10hz.launch](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_ec/launch/publisher_10hz.launch)では、`-o "exec_cxt.periodic.rate:10"`を与えている. 以下を実行するとサンプルを動かせる.
 ```
 rtmlaunch sample_ec publisher_10hz.launch

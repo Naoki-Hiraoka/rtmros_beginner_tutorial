@@ -81,7 +81,7 @@ manager.mgr/
 
 ### 3.1 Python Interface
 
-マネージャーを起動した後で、後からPythonのインターフェースから、マネージャーにRTコンポーネントを追加できる. マネージャーのプロセスに動的に`.so`ファイルをロードし、同一プロセス内にRTコンポーネントと実行コンテキストが追加される.
+マネージャーを起動した後で、後からPythonのインターフェースから、マネージャーにRTコンポーネントを追加できる. マネージャーのプロセスに動的に`.so`ファイルをロードし、同一プロセス内にRTコンポーネント(と実行コンテキスト)が追加される.
 
 ネームサーバーを立ち上げる.
 ```bash
@@ -97,10 +97,8 @@ $ rosrun openrtm_aist rtcd -o "corba.nameservers:localhost:15005" -o "naming.for
 このport 2810にあるマスターマネージャーに、[Writing Simple Publisher Subscriber RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Publisher_Subscriber_RTC.md)で作成した[sample_io_rtc](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc)の`Publisher.so`をロードし,`Publisher`RTコンポーネント(と実行コンテキスト)を生成させる.
 
 別のターミナルで以下のPythonスクリプトを実行する。
-```bash
-$ ipython
-```
 ```python
+$ ipython
 import sys
 from omniORB import CORBA
 import OpenRTM_aist
@@ -121,12 +119,12 @@ rtc = mgr.create_component("Publisher")
 Publisher0.rtc  manager.mgr/
 ```
 
-`mgr.create_component("Publisher")`を再度実行して、別のターミナルで`rtls localhost:15005/`を実行すると、マスターマネージャー同一のプロセス中に`Publisher1.rtc`(と実行コンテキスト)がもう一つ生成されていることが分かる.
+`mgr.create_component("Publisher")`を再度実行して、別のターミナルで`rtls localhost:15005/`を実行すると、`Publisher1.rtc`(と実行コンテキスト)がもう一つ生成されていることが分かる.
 ```
 Publisher0.rtc Publisher1.rtc manager.mgr/
 ```
 
-これらのコンポーネントは別スレッドでパラレルに実行される. これらのコンポーネント間のデータの受け渡しは, 同一プロセス間のため通常よりも高速であると期待される.
+これらのコンポーネントは別スレッドでパラレルに実行される. これらのコンポーネント間のport通信は, マスターマネージャーの同一プロセス間で行われるため通常よりも高速であると期待される.
 
 ### 3.2 create_component()
 
@@ -139,3 +137,10 @@ Publisher0.rtc Publisher1.rtc manager.mgr/
 - `instance_name=<instance name>`: 生成したRTコンポーネントをネームサーバーに登録するときのインスタンス名を指定する
 - `exec_cxt.periodic.rate=500`: 生成したRTコンポーネントの実行周期を指定する
 - `exec_cxt.periodic.type=PeriodicExecutionContext`: RTコンポーネントと同時に生成される実行コンテキストのタイプ指定する
+
+### 3.3 related options
+
+[公式ドキュメント](https://openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/rtc_conf_reference)
+- `manager.modules.load_path:<path1>,<path2>,<path3>`: モジュールロード時にマネージャーは指定されたサーチパスリストからモジュールを探索する.
+- `manager.modules.preload:<module1.so>,<module2.so>,<module3.so>`: マネージャー起動時に自動的に指定されたモジュールをロードする
+- `manager.components.precreate:<component name1>,<component name2>,<component name3>`: マネージャー起動時に指定されたコンポーネントを自動的に作成する

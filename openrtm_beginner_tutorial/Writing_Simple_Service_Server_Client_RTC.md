@@ -217,7 +217,9 @@ RTC::ReturnCode_t Server::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-`registerProvider`で`m_ServerServicePort`を`m_service0`と対応付けしている. これによって、portからサービスが呼ばれると, `m_ServerServicePort`は`m_service0`の該当するメンバ関数を呼ぶようになる. `addPort`で実際にサービスポートを生成している.
+`registerProvider`で`m_ServerServicePort`を`m_service0`と対応付けしている. これによって、portからサービスが呼ばれると, `m_ServerServicePort`は`m_service0`の該当するメンバ関数を呼ぶようになる. `registerProvider`の第一引数`service0`は単なる名前であり、何を与えても実用上あまり重要ではない. `registerProvider`の第二引数にはインターフェースの型名を与える.
+
+`addPort`でこのRTCに実際にサービスポートを生成している.
 
 ```c++
 CORBA::Long Server::addTwoInts(CORBA::Long a, CORBA::Long b) {
@@ -533,7 +535,9 @@ RTC::ReturnCode_t Client::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-`registerConsumer`で`m_ClientServicePort`を`m_consumer`と対応付けしている. これによって、`m_consumer`のメンバ関数を呼ぶと, portからサーバーにサービスコールするようになる. `addPort`で実際にサービスポートを生成している.
+`registerConsumer`で`m_ClientServicePort`を`m_consumer`と対応付けしている. これによって、`m_consumer`のメンバ関数を呼ぶと, portからサーバーにサービスコールするようになる. `registerConsumer`の第一引数`service0`は単なる名前であり、何を与えても実用上あまり重要ではない. `registerProvider`の第二引数にはインターフェースの型名を与える.
+
+`addPort`で実際にサービスポートを生成している.
 
 ```c++
 RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
