@@ -3,6 +3,9 @@
 サンプルコードは[sample_io_rtc](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc)にある.
 
 ## 1 Writing Publisher RTC
+
+出力ポート"chatter"をもち、毎周期配列を出力するRTコンポーネントを作成する.
+
 ### 1.1 The Code
 
 [Publisher.h](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc/rtc/Publisher/Publisher.h)
@@ -287,6 +290,8 @@ target_link_libraries(PublisherComp Publisher)
 先に生成した`Publisher.so`をリンクしている
 
 ## 2. Writing Subscriber RTC
+
+入力ポート"listener"をもち、毎周期配列を受け取るRTコンポーネントを作成する.
 
 ### 2.1 The Code
 [Subscriber.h](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc/rtc/Subscriber/Subscriber.h)

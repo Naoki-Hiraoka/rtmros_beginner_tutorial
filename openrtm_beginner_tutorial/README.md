@@ -26,6 +26,8 @@ ROSのチュートリアルを終えていることを想定している.
 
 11. [Understanding Execution Context](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Understanding_Execution_Context.md)
 
+12. [Creating ROS node RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Creating_ROS_node_RTC.md)
+
 manager
 python interface
 rtcd execution context

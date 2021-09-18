@@ -1,0 +1,9 @@
+<launch>
+  <node name="my_ros_rtc" pkg="sample_ros_rtc" type="MyRosRtcComp" args='-o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc"' output="screen"/>
+
+  <!-- BEGIN:openrtm connection -->
+  <node name="rtmlaunch_py" pkg="openrtm_tools" type="rtmlaunch.py"
+        args="$(find sample_ros_rtc)/launch/myrosrtc.launch" />
+  <rtactivate component="MyRosRtc0.rtc" />
+  <!-- END:openrtm connection -->
+</launch>
