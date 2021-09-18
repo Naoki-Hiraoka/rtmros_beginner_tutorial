@@ -1,0 +1,15 @@
+<launch>
+  <arg name="openrtm_args" value='-o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc" ' />
+
+  <node name="server" pkg="sample_service_bridge" type="MyServerComp" args='$(arg openrtm_args)' output="screen"/>
+
+  <node name="MyBridgeServiceROSBridge" pkg="sample_service_bridge" type="MyBridgeServiceROSBridgeComp" args='$(arg openrtm_args)' output="screen"/>
+
+  <!-- BEGIN:openrtm connection -->
+  <node name="rtmlaunch_py" pkg="openrtm_tools" type="rtmlaunch.py"
+        args="$(find sample_service_bridge)/launch/server.launch" />
+  <rtactivate component="MyServer0.rtc" />
+  <rtactivate component="MyBridgeServiceROSBridge.rtc" />
+  <rtconnect from="MyServer0.rtc:service0"     to="MyBridgeServiceROSBridge.rtc:MyBridgeService" />
+  <!-- END:openrtm connection -->
+</launch>

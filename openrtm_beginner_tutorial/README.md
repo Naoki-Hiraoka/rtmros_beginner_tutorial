@@ -28,6 +28,8 @@ ROSのチュートリアルを終えていることを想定している.
 
 12. [Creating ROS node RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Creating_ROS_node_RTC.md)
 
+13. [Creating Service ROS Bridge Automatically](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Creating_Service_ROS_Bridge_Automatically.md)
+
 manager
 python interface
 rtcd execution context

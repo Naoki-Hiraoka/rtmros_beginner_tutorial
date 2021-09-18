@@ -12,7 +12,7 @@ class ServerService_impl
 public:
   ServerService_impl();// 実装は.cppファイルの方に書かないと、registerProvider時にSegmentation Faultになる
   virtual ~ServerService_impl();
-  CORBA::Boolean addTwoInts(CORBA::Long a, CORBA::Long b);
+  CORBA::Long addTwoInts(CORBA::Long a, CORBA::Long b);
   CORBA::Boolean addTwoTime(const RTC::Time& a, const RTC::Time& b, RTC::Time_out sum);
   CORBA::Boolean addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq_out sum);
 

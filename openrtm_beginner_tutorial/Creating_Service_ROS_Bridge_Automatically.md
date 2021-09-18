@@ -1,0 +1,78 @@
+# Creating Service ROS Bridge Automatically
+
+## 1. サービスブリッジの自動生成
+
+`rtmbuild`には、`idl`で定義されたインタフェースを読んで、ROSのサービス型を自動生成し、さらに、
+
+ROSのサービスサーバーノードで、ROSのクライアントからサービスコールが呼ばれると内部でOpenRTMのサービスサーバーにOpenRTMのサービスコールをして、結果をROSのクライアントに返すノードのプログラムを自動で生成する機能がある.
+
+Service Client(ROS node) `--[ROS Service Call]->` ServiceBridge `--[OpenRTM Service Call]->` Service Server(RTC)
+
+サンプルコードは[sample_service_bridge](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_service_bridge)にある.
+
+## 2. Usage
+
+CMakeLists.txtに, 以下のように書く.
+```
+find_package(catkin REQUIRED COMPONENTS rtmbuild roscpp)
+
+# initialize rtmbuild. Call BEFORE catkin_package
+rtmbuild_init()
+
+catkin_package()
+
+# generate idl
+rtmbuild_genidl()
+
+# generate bridge
+rtmbuild_genbridge()
+```
+最後の`rtmbuild_genbridge`は、これまでのチュートリアルにはなかったコマンドである. このコマンドによって、`idl`ディレクトリ以下にあるファイルので定義されているインタフェースごとに、サービスのROSブリッジが自動生成される.
+
+## 3. ROS Bridge
+
+- executable name: `<インタフェース名>ROSBridgeComp`
+- RTC instance_name: `<ROSのノード名と同じ>`
+
+### Services(ROS)
+- `~<関数名>` (`<パッケージ名>/<モジュール名>_<インターフェース名>_<関数名>`型)
+  このインターフェースが持つ関数それぞれに対応したサービスが提供される.
+
+### Service Ports(OpenRTM)
+- `<インタフェース名>`
+  サービスクライアント. ROSからサービスが呼ばれると、このportに同名のサービスコールをする.
+
+## 4. Run Sample
+
+[sample_service_bridge](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_service_bridge)にサンプルがある.
+
+このサンプルではidlファイルに次のようなインターフェースを定義している.
+```
+#include "BasicDataType.idl"
+
+module MySample
+{
+  interface MyBridgeService
+  {
+    boolean addTwoInts(in long a, in long b, out long sum);
+  };
+};
+```
+また、[Writing Simple Service Server Client RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Service_Server_Client_RTC.md)と同様にしてこのインターフェースに対応したサーバーのRTコンポーネントを作成している.
+
+ROSブリッジを利用しすることで、ROSのレイヤからサービスコールをして、このRTコンポーネントの`addTwoInts`を呼ぶ.
+
+ビルド
+```bash
+catkin build sample_service_bridge
+```
+
+起動
+```
+rtmlaunch sample_service_bridge server.launch
+```
+
+ROSからサービスコールを送る
+```
+rosservice call /MyBridgeServiceROSBridge/addTwoInts 1 2
+```

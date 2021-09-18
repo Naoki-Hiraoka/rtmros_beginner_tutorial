@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sample_service_bridge</name>
+  <version>0.0.0</version>
+  <description>The sample_service_bridge package</description>
+
+  <maintainer email="hiraoka@jsk.imi.i.u-tokyo.ac.jp">Naoki-Hiraoka</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rtmbuild</depend>
+  <depend>roscpp</depend>
+
+</package>

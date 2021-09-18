@@ -1,0 +1,9 @@
+#include "BasicDataType.idl"
+
+module MySample
+{
+  interface MyBridgeService
+  {
+    boolean addTwoInts(in long a, in long b, out long sum);
+  };
+};
