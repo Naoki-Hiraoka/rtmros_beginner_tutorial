@@ -100,7 +100,9 @@ RTCTREE_NANESERVERS=localhost:2809
   - push_rate="double" (default 50.0)
   - buffer_length="int" (default "")
 
-各引数の意味は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/dataport)参照
+各引数の意味は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/dataport)参照.
+
+ネットワーク越しに通信する場合、`subscription_type="periodic" push_policy="new" push_rate="50.0", buffer_length="8"`などとして実際に利用されている.
 
 ### 2.5 check connection/activation
 

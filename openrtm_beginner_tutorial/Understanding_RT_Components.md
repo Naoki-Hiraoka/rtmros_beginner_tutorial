@@ -27,7 +27,7 @@ RTコンポーネントはROSの`node`と同様の役割を果たす.
 
 引数`naming.formats:%n.rtc`でRTCをネームサーバに登録する際の名前のフォーマットを指定している.
 
-引数の詳細は[公式ドキュメント1](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/rtc_conf_reference), [公式ドキュメント2](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/comp_conf_reference)参照
+利用可能な引数の詳細は[公式ドキュメント1](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/rtc_conf_reference), [公式ドキュメント2](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/comp_conf_reference)参照
 
 
 ## 3. rtls

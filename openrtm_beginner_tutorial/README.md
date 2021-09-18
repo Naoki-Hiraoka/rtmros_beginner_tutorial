@@ -24,14 +24,11 @@ ROSのチュートリアルを終えていることを想定している.
 
 10. [Writing Simple Service Server Client RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Service_Server_Client_RTC.md)
 
+11. [Understanding Execution Context](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Understanding_Execution_Context.md)
 
-subscription type
-
-periodoc rate
-execution context
 manager
 python interface
-rtcd
+rtcd execution context
 
 rosnode
 ros_bridge

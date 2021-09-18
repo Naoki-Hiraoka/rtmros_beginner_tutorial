@@ -1,0 +1,10 @@
+<launch>
+  <node name="publisher" pkg="sample_io_rtc" type="PublisherComp" output="screen"
+        args='-o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc" -o "exec_cxt.periodic.rate:1"'/>
+
+  <!-- BEGIN:openrtm connection -->
+  <node name="rtmlaunch_py" pkg="openrtm_tools" type="rtmlaunch.py"
+        args="$(find sample_ec)/launch/publisher_1hz.launch" />
+  <rtactivate component="Publisher0.rtc" />
+  <!-- END:openrtm connection -->
+</launch>
