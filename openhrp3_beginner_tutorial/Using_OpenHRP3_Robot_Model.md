@@ -58,6 +58,7 @@ extern "C"
 
 #include <hrpModel/Body.h>
 #include <hrpModel/Link.h>
+#include <hrpModel/Sensor.h>
 
 #include <iostream>
 
@@ -170,6 +171,7 @@ int main (int argc, char** argv)
 ```c++
 #include <hrpModel/Body.h>
 #include <hrpModel/Link.h>
+#include <hrpModel/Sensor.h>
 ```
 ロボットモデルのクラスが定義された必要なファイル郡
 

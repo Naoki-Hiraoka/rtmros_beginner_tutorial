@@ -5,6 +5,7 @@
 
 #include <hrpModel/Body.h>
 #include <hrpModel/Link.h>
+#include <hrpModel/Sensor.h>
 
 #include <iostream>
 

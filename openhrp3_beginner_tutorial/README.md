@@ -9,3 +9,5 @@ OpenHRP3は10年近く前に開発を終了したソフトウェアであるた�
 1. [Installing and Configuring Your Environment](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openhrp3_beginner_tutorial/Installing_and_Configuring_Your_Environment.md)
 
 2. [Using OpenHRP3 Robot Model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openhrp3_beginner_tutorial/Using_OpenHRP3_Robot_Model.md)
+
+3. [OpenHRP3 Robot Model API](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openhrp3_beginner_tutorial/OpenHRP3_Robot_Model_API.md)
