@@ -2,7 +2,7 @@
 
 [公式ドキュメント](https://fkanehiro.github.io/openhrp3-doc/jp/index.html)
 
-OpenHRP3は10年近く前に開発を終了したソフトウェアであるため、新しくプログラムを書くときにはOpenHRP3ではなくChoreonoidを利用することを推奨する.
+OpenHRP3は10年近く前に開発を終了したソフトウェアであるため、新しくプログラムを書くときにはOpenHRP3ではなく後継のChoreonoidを利用することを推奨する.
 
 [openrtmチュートリアル](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial)を終えていることを想定している.
 

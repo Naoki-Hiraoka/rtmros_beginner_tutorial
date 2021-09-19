@@ -2,9 +2,9 @@
 
 ## 1. Choreonoid Robot Model
 
-Choreonoidは、VRML(OpenHRP形式)モデルやBodyモデルを読み込んで、運動学・動力学計算を行うことができる. OpenHRP3の進化系として設計されているため、APIがよく似ている.
+Choreonoidは、VRML(OpenHRP形式)モデルやBodyモデルを読み込んで、運動学・動力学計算を行うことができる. OpenHRP3の進化形として設計されているため、APIがよく似ている.
 
-C++のプログラムで, VRML(OpenHRP形式)モデルを読み込む方法を説明する.
+C++のプログラムで, モデルを読み込む方法を説明する.
 
 サンプルコードは[sample_choreonoid_model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/choreonoid_beginner_tutorial/sample_choreonoid_model)にある
 

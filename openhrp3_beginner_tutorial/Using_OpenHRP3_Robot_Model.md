@@ -4,7 +4,7 @@
 
 OpenHRP3は、VRML(OpenHRP形式)モデルを読み込んで、運動学・動力学計算を行うことができる.
 
-C++のプログラムで, VRML(OpenHRP形式)モデルを読み込む方法を説明する.
+C++のプログラムで, モデルを読み込む方法を説明する.
 
 サンプルコードは[sample_openhrp3_model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openhrp3_beginner_tutorial/sample_openhrp3_model)にある
 
