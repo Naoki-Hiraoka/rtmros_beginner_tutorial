@@ -1,8 +1,10 @@
 # OpenHRP3 Robot Model API
 
+[ソースコード](https://github.com/fkanehiro/openhrp3/tree/master/hrplib/hrpModel)を読むのが一番
+
 親関節と子リンクが一体で扱われ,`Link`クラスを構成する点が特徴. 各`Link`の名前は,親関節の名前になる.
 
-行列計算は`Eigen`が用いられている.
+行列計算は`Eigen`が用いられている. [EigenTypes.h](https://github.com/fkanehiro/openhrp3/blob/master/hrplib/hrpUtil/EigenTypes.h)に行列型が定義されている.
 
 ## hrp::Bodyクラス
 ### 主なメンバ関数

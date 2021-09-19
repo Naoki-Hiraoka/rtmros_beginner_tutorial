@@ -2,9 +2,9 @@
 
 ## 1. OpenHRP3 Robot Model
 
-OpenHRP3は、VRMLモデルを読み込んで、運動学・動力学計算を行うことができる.
+OpenHRP3は、VRML(OpenHRP形式)モデルを読み込んで、運動学・動力学計算を行うことができる.
 
-C++のプログラムで, VRMLモデルを読み込む方法を説明する.
+C++のプログラムで, VRML(OpenHRP形式)モデルを読み込む方法を説明する.
 
 サンプルコードは[sample_openhrp3_model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openhrp3_beginner_tutorial/sample_openhrp3_model)にある
 
@@ -20,7 +20,7 @@ rosrun openhrp3 openhrp-model-loader -ORBInitRef NameService=corbaloc:iiop:local
 
 ネームサーバーのportを引数で指定する(この例では15005). 事前にネームサーバーを立ち上げておくこと.
 
-## 2. The Code
+## 3. The Code
 
 ここでは、`/opt/ros/melodic/share/openhrp3/share/OpenHRP-3.1/sample/model/sample1.wrl`にあるSampleRobotモデルを読み込むコードで説明する. ROSのDISTROが違う場合にはパスを修正すること.
 
@@ -158,7 +158,7 @@ int main (int argc, char** argv)
 }
 ```
 
-## 3. The Code Explained
+## 4. The Code Explained
 
 `ModelLoader`との通信にOpenRTMを使用するため、RTコンポーネントとしてプログラムを書く必要がある.
 
@@ -207,7 +207,7 @@ RTC::ReturnCode_t OpenHRP3ModelSample::onInitialize(){
 ```
 読み込んだロボットの名前と、関節名を表示させている.
 
-## 4. Build Code
+## 5. Build Code
 
 CMakeLists.txtに以下を記述する.
 ```
@@ -226,7 +226,7 @@ target_link_libraries(OpenHRP3ModelSampleComp OpenHRP3ModelSample)
 
 OpenHRP3のライブラリ群は、`rtmbuild`の中で自動的にリンクされる.
 
-## 5. Run Example
+## 6. Run Example
 
 [sample.launch](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openhrp3_beginner_tutorial/sample_openhrp3_model/launch/sample.launch)
 ```xml
