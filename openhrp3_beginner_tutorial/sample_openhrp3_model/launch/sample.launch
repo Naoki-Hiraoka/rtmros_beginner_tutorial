@@ -1,0 +1,13 @@
+<launch>
+  <node name="modelloader" pkg="openhrp3" type="openhrp-model-loader"
+        args="-ORBInitRef NameService=corbaloc:iiop:localhost:15005/NameService" output="screen"/>
+
+  <node name="openhrp3_model_sample" pkg="sample_openhrp3_model" type="OpenHRP3ModelSampleComp" output="screen"
+        args='-o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc" '/>
+
+  <!-- BEGIN:openrtm connection -->
+  <node name="rtmlaunch_py" pkg="openrtm_tools" type="rtmlaunch.py"
+        args="$(find sample_openhrp3_model)/launch/sample.launch" />
+  <rtactivate component="OpenHRP3ModelSample0.rtc" />
+  <!-- END:openrtm connection -->
+</launch>
