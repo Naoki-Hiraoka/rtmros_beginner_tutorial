@@ -21,6 +21,8 @@ ROSでは`roslaunch`を使うと自動で`roscore`が立ち上がるが、同様
 rosrun openrtm_aist SeqOutComp -o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc"
 ```
 
+これによって、`SequenceOutComponent0.rtc`という名前のコンポーネントが立ち上がる.
+
 RTコンポーネントはROSの`node`と同様の役割を果たす.
 
 引数`corba.nameservers:localhost:15005`でネームサーバーのポート番号を指定している.
