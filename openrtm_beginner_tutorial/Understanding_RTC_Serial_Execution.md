@@ -53,6 +53,13 @@ publisher.get_owned_contexts()[0].add_component(subscriber)
 
 実行コンテキストは自身が管理するRTコンポーネントを、追加された順にシリアルに実行する. これによって、同一周期の間に`Publisher`->`Subcriber`の順に実行されるようになる.
 
+なお、subscriberをアクティベートするためには, 初期化時と違う実行コンテキストを使うため
+```bash
+$ rtact localhost:15005/Publisher0
+$ rtact localhost:15005/Subscriber0 -e 1
+`
+と`-e 1`オプションをつける必要がある.
+
 ## 3. connection
 
 シリアルに実行する場合は、コンポーネント間の通信は次のコンポーネントを実行開始するときには完了していることが必要である.そのためport間の通信の設定は、サブスリクション型は`flush`, データ送信ポリシーは`new`がよい.
