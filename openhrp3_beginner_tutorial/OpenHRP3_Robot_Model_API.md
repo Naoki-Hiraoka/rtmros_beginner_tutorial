@@ -20,13 +20,13 @@
 - `double calcTotalMass()`: 全身の重量の和を計算しキャッシュする.
 - `inline double totalMass() const`: キャッシュされた全身の重量の和を返す
 - `void calcForwardKinematics(bool calcVelocity = false, bool calcAcceleration = false)`: 各`Link`の`q`とルートリンクの`p`,`R`から、全`Link`の`p`,`R`を計算する. `calcVelocity`がtrueなら、各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全`Link`の`p`,`v`,`R`,`w`を計算する. さらに`calcAcceleration`がtrueなら、各`Link`の`q`,`dq`,`ddq`とルートリンクの`p`,`v`,`dv`,`R`,`w`,`dw`から、全`Link`の`p`,`v`,`dv`,`R`,`w`,`dw`を計算する.
-- `Vector3 calcCM()`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心位置を計算して返す. 事前に`void calcForwardKinematics()`が必要.
+- `Vector3 calcCM()`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心位置を計算して返す. 事前に`calcForwardKinematics()`が必要.
 - `void calcMassMatrix(dmatrix& out_M)`: `6+n`x`6+n`の慣性行列を計算する.
 - `void calcInverseDynamics(Link* link, Vector3& out_f, Vector3& out_tau)`: 各`Link`の`q`,`dq`,`ddq`とルートリンクの`p`,`vo`,`dvo`,`R`,`w`,`dw`から、全`Link`の`u`を計算する.事前に`void calcForwardKinematics()`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
-- `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`void calcForwardKinematics(True)`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
+- `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`calcForwardKinematics(True)`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
 - `JointPathPtr getJointPath(Link* baseLink, Link* targetLink)`: `baseLink`から`targetLink`への間にある関節の鎖を返す
-- `void calcCMJacobian(Link *base, dmatrix &J)`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心ヤコビアンを計算して返す. 事前に`void calcForwardKinematics()`と`calcCM()`が必要.
-- `void calcAngularMomentumJacobian(Link *base, dmatrix &H)`: 各`Link`の`q`とルートリンクの`p`,`R`から、角運動量ヤコビアンを計算して返す. 事前に`void calcForwardKinematics()`と`calcCM()`が必要.
+- `void calcCMJacobian(Link *base, dmatrix &J)`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心ヤコビアンを計算して返す. 事前に`calcForwardKinematics()`と`calcCM()`が必要.
+- `void calcAngularMomentumJacobian(Link *base, dmatrix &H)`: 各`Link`の`q`とルートリンクの`p`,`R`から、角運動量ヤコビアンを計算して返す. 事前に`calcForwardKinematics()`と`calcCM()`が必要.
 
 ## hrp::Linkクラス
 ### 主なメンバ変数
