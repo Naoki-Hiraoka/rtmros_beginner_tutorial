@@ -408,7 +408,7 @@ extern "C"
   void SubscriberInit(RTC::Manager* manager);
 };
 ```
-このプラグインをロードしたときにfactory関数を登録するための関数であるw
+このプラグインをロードしたときにfactory関数を登録するための関数である
 
 ```c++
 Subscriber::Subscriber(RTC::Manager* manager):
