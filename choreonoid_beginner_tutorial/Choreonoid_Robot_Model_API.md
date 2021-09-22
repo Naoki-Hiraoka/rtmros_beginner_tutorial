@@ -21,7 +21,7 @@
 - `template<class DeviceType> DeviceType* findDevice(const std::string& name) const`: 指定したタイプの指定した名前の`Device`を返す
 - `double mass() const`: 全身の重量の和を返す
 - `void calcForwardKinematics(bool calcVelocity = false, bool calcAcceleration = false)`: 各`Link`の`q`とルートリンクの`p`,`R`から、全`Link`の`p`,`R`を計算する. `calcVelocity`がtrueなら、各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全`Link`の`p`,`v`,`R`,`w`を計算する. さらに`calcAcceleration`がtrueなら、各`Link`の`q`,`dq`,`ddq`とルートリンクの`p`,`v`,`dv`,`R`,`w`,`dw`から、全`Link`の`p`,`v`,`dv`,`R`,`w`,`dw`を計算する.
-- `const Vector3& calcCenterOfMass()`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心位置を計算して返す. 事前に`void calcForwardKinematics()`が必要.
+- `const Vector3& calcCenterOfMass()`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心位置を計算して返す. 事前に`calcForwardKinematics()`が必要.
 - `const Vector3& centerOfMass() const`: キャッシュされた重心位置を返す.
 - `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`void calcForwardKinematics(True)`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
 
