@@ -223,7 +223,7 @@ rtmlaunch sample_ros_rtc myrosrtc.launch
 rostopic pub /pose geometry_msgs/PoseStamped "[0, 0, \"\"]" "[[1, 2, 3], [0, 0, 0, 1]]" -r 1
 ```
 
-MuRosRtcの出力port`pose`に、ROSのトピックのデータが出力されていることが分かる
+MyRosRtcの出力port`pose`に、ROSのトピックのデータが出力されていることが分かる
 ```bash
 $ rtprint localhost:15005/MyRosRtc0.rtc:pose -t 10
 comp_args: rtprint_reader0?exec_cxt.periodic.type=PeriodicExecutionContext&exec_cxt.periodic.rate=100.0
