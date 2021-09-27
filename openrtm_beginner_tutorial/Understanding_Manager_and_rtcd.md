@@ -98,6 +98,7 @@ $ rosrun openrtm_aist rtcd -o "corba.nameservers:localhost:15005" -o "naming.for
 
 別のターミナルで以下のPythonスクリプトを実行する。
 ```python
+$ sudo apt install python-pkgconfig
 $ ipython
 import sys
 from omniORB import CORBA
