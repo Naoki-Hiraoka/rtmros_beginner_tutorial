@@ -27,7 +27,8 @@ void MyRosRtc::poseCallback(const geometry_msgs::PoseStamped::ConstPtr& msg) {
   m_data.data.position.x = msg->pose.position.x;
   m_data.data.position.y = msg->pose.position.y;
   m_data.data.position.z = msg->pose.position.z;
-  tf2::getEulerYPR(msg->pose.orientation,m_data.data.orientation.y,m_data.data.orientation.p,m_data.data.orientation.r);
+  tf2::Quaternion quat(msg->pose.orientation.x,msg->pose.orientation.y,msg->pose.orientation.z,msg->pose.orientation.w);
+  tf2::Matrix3x3(quat).getRPY(m_data.data.orientation.r,m_data.data.orientation.p,m_data.data.orientation.y);
   m_dataOut.write();
 }
 
