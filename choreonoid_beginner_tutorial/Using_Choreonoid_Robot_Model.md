@@ -86,7 +86,7 @@ catkin_package()
 include_directories(${CHOREONOID_INCLUDE_DIRS})
 link_directories(${CHOREONOID_LIBRARY_DIRS})
 add_executable(sample src/sample.cpp)
-target_link_libraries(sample ${CHOREONOID_BODY_LIBRARIES_ABS})
+target_link_libraries(sample ${CHOREONOID_BODY_LIBRARIES})
 
 install(TARGETS sample
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
