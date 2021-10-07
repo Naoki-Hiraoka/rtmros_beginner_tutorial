@@ -31,7 +31,6 @@ int main(void){
   }
 
   // print robot names
-  std::cout << "loaded: " << robot->name() << std::endl;
   for(int i=0;i<robot->numJoints() ;i++){
     std::cout << robot->joint(i)->name() << std::endl;
   }
