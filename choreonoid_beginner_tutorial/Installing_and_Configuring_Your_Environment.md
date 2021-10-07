@@ -1,4 +1,4 @@
-# Installing and Configuring Your Environment.md
+# Installing and Configuring Your Environment
 
 ## 1. Choreonoidのインストール
 
