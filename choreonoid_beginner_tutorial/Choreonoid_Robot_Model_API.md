@@ -1,6 +1,6 @@
 # Choreonoid Robot Model API
 
-[ソースコード](https://github.com/choreonoid/choreonoid/tree/master/src/Body)を読むのが一番
+[ソースコード](https://github.com/choreonoid/choreonoid/tree/master/src/Body)のヘッダファイルを読むのが一番
 
 親関節と子リンクが一体で扱われ,`Link`クラスを構成する点が特徴. 各`Link`の名前は,親関節の名前になる.
 
