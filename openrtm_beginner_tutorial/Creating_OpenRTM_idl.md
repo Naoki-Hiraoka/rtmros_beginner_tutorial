@@ -62,7 +62,7 @@ module sample_idl
 ### 2.2 Creating Service Type
 ROSのsrvに相当する、通信で用いるサービスの型を定義する.
 
-以下のサンプルでは、`addTwoInts`, `addTwoTime`, `addTwoTimedDoubleSeq`という3つのサービスコールをもったインターフェース(`MySample::MyOriginalService`)を定義している.
+以下のサンプルでは、`addTwoInts`, `addTwoTime`, `addTwoTimedDoubleSeq`という3つのサービスコールをもったインターフェース(`sample_idl::MyOriginalService`)を定義している.
 ```
 #include "BasicDataType.idl"
 
