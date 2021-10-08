@@ -27,7 +27,7 @@ rtmbuild_genidl()
 # generate bridge
 rtmbuild_genbridge()
 ```
-最後の`rtmbuild_genbridge`は、これまでのチュートリアルにはなかったコマンドである. このコマンドによって、`idl`ディレクトリ以下にあるファイルので定義されているインタフェースごとに、サービスのROSブリッジが自動生成される.
+最後の`rtmbuild_genbridge`は、これまでのチュートリアルにはなかったコマンドである. このコマンドによって、`idl`ディレクトリ以下にあるファイルで定義されているインタフェースごとに、サービスのROSブリッジが自動生成される.
 
 ## 3. ROS Bridge
 
