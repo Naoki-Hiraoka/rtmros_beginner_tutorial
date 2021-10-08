@@ -50,7 +50,7 @@ rtmbuild_genbridge()
 ```
 #include "BasicDataType.idl"
 
-module MySample
+module sample_service_bridge
 {
   interface MyBridgeService
   {
@@ -60,7 +60,7 @@ module MySample
 ```
 また、[Writing Simple Service Server Client RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Service_Server_Client_RTC.md)と同様にしてこのインターフェースに対応したサーバーのRTコンポーネントを作成している.
 
-ROSブリッジを利用しすることで、ROSのレイヤからサービスコールをして、このRTコンポーネントの`addTwoInts`を呼ぶ.
+ROSブリッジを利用することで、ROSのレイヤからサービスコールをして、このRTコンポーネントの`addTwoInts`を呼ぶ.
 
 ビルド
 ```bash

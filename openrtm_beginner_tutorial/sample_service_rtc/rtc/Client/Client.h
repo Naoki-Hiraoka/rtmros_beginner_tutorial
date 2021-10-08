@@ -11,7 +11,7 @@
 
 class Client : public RTC::DataFlowComponentBase{
 protected:
-  RTC::CorbaConsumer<MySample::MyOriginalService> m_consumer;
+  RTC::CorbaConsumer<sample_service_rtc::MyOriginalService> m_consumer;
   RTC::CorbaPort m_ClientServicePort;
 
 public:

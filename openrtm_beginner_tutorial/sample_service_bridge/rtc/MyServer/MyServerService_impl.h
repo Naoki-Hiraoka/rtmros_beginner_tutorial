@@ -6,7 +6,7 @@
 class MyServer;
 
 class MyServerService_impl
-  : public virtual POA_MySample::MyBridgeService,
+  : public virtual POA_sample_service_bridge::MyBridgeService,
     public virtual PortableServer::RefCountServantBase
 {
 public:

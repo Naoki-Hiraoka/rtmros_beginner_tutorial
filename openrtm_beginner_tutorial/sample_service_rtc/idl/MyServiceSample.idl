@@ -1,6 +1,6 @@
 #include "BasicDataType.idl"
 
-module MySample
+module sample_service_rtc
 {
   interface MyOriginalService
   {

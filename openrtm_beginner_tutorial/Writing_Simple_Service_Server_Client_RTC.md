@@ -4,7 +4,7 @@
 ```
 #include "BasicDataType.idl"
 
-module MySample
+module sample_service_rtc
 {
   interface MyOriginalService
   {
@@ -405,7 +405,7 @@ target_link_libraries(ServerComp Server)
 
 class Client : public RTC::DataFlowComponentBase{
 protected:
-  RTC::CorbaConsumer<MySample::MyOriginalService> m_consumer;
+  RTC::CorbaConsumer<sample_service_rtc::MyOriginalService> m_consumer;
   RTC::CorbaPort m_ClientServicePort;
 
 public:
@@ -494,7 +494,7 @@ RTコンポーネントは`RTC::DataFlowComponentBase`クラスを継承する
 
 ```c++
 protected:
-  RTC::CorbaConsumer<MySample::MyOriginalService> m_consumer;
+  RTC::CorbaConsumer<sample_service_rtc::MyOriginalService> m_consumer;
   RTC::CorbaPort m_ClientServicePort;
 ```
 `RTC::CorbaConsumer`はインターフェースのコンシューマである.

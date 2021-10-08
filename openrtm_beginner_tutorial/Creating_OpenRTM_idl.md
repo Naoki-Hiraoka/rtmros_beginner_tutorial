@@ -33,7 +33,7 @@ module sample_idl
 ```
 同じ内容のファイルが[MyDataSample.idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_idl/idl/MyDataSample.idl)にある.
 
-データ型は`struct`で宣言し、名前空間は`module`で宣言する. 一つのファイルで複数のデータ型を定義してもよい.
+データ型は`struct`で宣言し、名前空間は`module`で宣言する. 名前空間はパッケージ名と同一にしておくとpythonからのロード時などで後々楽である. 一つのファイルで複数のデータ型を定義してもよい.
 
 変数として利用可能なデータ型は、以下の通り
 - 基本型 ([公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/dataport_advanced)より改変)
