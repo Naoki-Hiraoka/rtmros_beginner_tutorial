@@ -56,6 +56,7 @@ module sample_idl
 | string | 文字列型 | string stringVariable; |
 
 - ユーザ定義型
+
   上記サンプルでは、`BasicDataType.idl`で定義されているRTC::Time型を使用している. そのために、一行目で`BasicDataType.idl`をincludeしている.
 
 ### 2.2 Creating Service Type
