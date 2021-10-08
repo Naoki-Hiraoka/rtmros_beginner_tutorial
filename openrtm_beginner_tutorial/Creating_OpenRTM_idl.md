@@ -20,7 +20,7 @@ ROSのmsgに相当する、通信で用いるデータの型を定義する.
 ```
 #include "BasicDataType.idl"
 
-module MySample
+module sample_idl
 {
   struct MyData
   {
@@ -65,7 +65,7 @@ ROSのsrvに相当する、通信で用いるサービスの型を定義する.
 ```
 #include "BasicDataType.idl"
 
-module MySample
+module sample_idl
 {
   interface MyOriginalService
   {
@@ -79,7 +79,7 @@ module MySample
 };
 ```
 
-同じ内容のファイルが[MyServiceSample.idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_idl/idl/MyServiceSample.idl)にある.
+同じ内容のファイルが[MySrvSample.idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_idl/idl/MySrvSample.idl)にある.
 
 一つのファイルで複数のインターフェースを定義してもよい.
 
@@ -101,8 +101,10 @@ rtmbuild_init()
 
 catkin_package()
 
-# generate idl
+# add_custom_command to compile idl/*.idl file into c++
 rtmbuild_genidl()
+
+add_custom_target(genidl ALL DEPENDS RTMBUILD_${PROJECT_NAME}_genrpc)
 ```
 
 これらを行ったパッケージが、[sample_idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_idl)にある.
@@ -111,6 +113,33 @@ rtmbuild_genidl()
 ```
 catkin build sample_idl
 ```
-CORBAのSkelやStubが生成される.
 
-なお、独自に定義した型を`rtprint`で表示しようとするとうまくいかない場合がある.
+### 2.4 Use (for cpp)
+
+CORBAの通信で用いるSkelとStubが生成されており、これらをリンクすることでcppのプログラムで使用できる
+```bash
+$ roscd
+$ ls lib
+libMyDataSampleSkel.so libMyDataSampleStub.so libMySrvSampleSkel.so libMySrvSampleStub.so
+```
+
+プログラム中では次のように使用する
+```c++
+#include <sample_idl/idl/MyDataSample.hh>
+
+sample_idl::MyData a;
+```
+
+### 2.4 Use (for python)
+プログラム中では次のように使用する
+```python
+import OpenRTM_aist
+import sample_idl
+from sample_idl import MyDataSample_idl
+
+sample_idl.MyData
+```
+
+### 2.5 Use (for shell)
+
+(独自に定義した型を`rtprint`で表示しようとするとうまくいかない場合がある.)

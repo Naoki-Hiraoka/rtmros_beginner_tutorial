@@ -8,5 +8,7 @@ rtmbuild_init()
 
 catkin_package()
 
-# generate idl
+# add_custom_command to compile idl/*.idl file into c++
 rtmbuild_genidl()
+
+add_custom_target(genidl ALL DEPENDS RTMBUILD_${PROJECT_NAME}_genrpc)

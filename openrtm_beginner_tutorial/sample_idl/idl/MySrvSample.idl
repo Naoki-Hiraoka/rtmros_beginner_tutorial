@@ -1,6 +1,6 @@
 #include "BasicDataType.idl"
 
-module MySample
+module sample_idl
 {
   interface MyOriginalService
   {
