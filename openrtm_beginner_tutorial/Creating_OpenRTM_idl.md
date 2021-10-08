@@ -16,7 +16,7 @@ ROSの`std_msgs`のように、既に用意されているidlもある.
 
 ROSのmsgに相当する、通信で用いるデータの型を定義する.
 
-以下のサンプルでは、`MySample::MyData`型を定義している.
+以下のサンプルでは、`sample_idl::MyData`型を定義している.
 ```
 #include "BasicDataType.idl"
 
