@@ -104,14 +104,24 @@ RTCTREE_NANESERVERS=localhost:2809
 
 ネットワーク越しに通信する場合、`subscription_type="periodic" push_policy="new" push_rate="50.0", buffer_length="8"`などとして実際に利用されている.
 
-### 2.6 check connection/activation
+### 2.6 Tips for rtmlaunch.py
+
+#### 2.6.1 check connection/activation
 
 `rtmlaunch.py`は、10秒おきに`<rtactivate>`タグに設定されたコンポーネントの実行状態をチェックし、実行中で無ければ実行中にする. 同様に、10秒おきに`<rtconnect>`タグに設定されたポートの接続状態をチェックし、接続されて無ければ接続にする.
 
-環境変数`RTC_CONNECTION_CHECK_ONCE`をセットすると, このチェックを行わない. 膨大な数のポートのチェックを行うとコンポーネントの実行速度が遅くなるため、リアルタイムタスクでは無効化することを推奨する.
+環境変数`RTC_CONNECTION_CHECK_ONCE`を`true`セットすると, このチェックを行わない. 膨大な数のポートのチェックを行うとコンポーネントの実行速度が遅くなるため、リアルタイムタスクでは無効化することを推奨する.
 ```
 RTC_CONNECTION_CHECK_ONCE=true
 ```
+
+#### 2.6.2 Substitution args
+
+`rtmlaunch.py`はrtconnectタグやrtactivateタグをパースするに際して、roslaunchのsubstitution argsの機能のうちの一部しか利用できず、それらも通常とは異なる形で解決される.
+
+- `$(arg foo)`を解決するためには、環境変数`foo`をその値にセットする必要がある.
+- `if="$(arg foo)"` `unless="$(arg foo)"`は、rtconnectタグ・rtactivateタグ・深さ1のgroupタグのものしか解釈されず、`rtmlaunch.py`の引数に`foo=true`または`foo=false`を与える必要がある.
+- それ以外のsubstitution argsは利用不可
 
 ### 2.7 rtmlaunching
 
