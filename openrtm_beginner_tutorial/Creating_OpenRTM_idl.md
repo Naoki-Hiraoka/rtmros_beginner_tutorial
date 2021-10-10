@@ -100,13 +100,16 @@ find_package(catkin REQUIRED COMPONENTS rtmbuild)
 # initialize rtmbuild. Call BEFORE catkin_package
 rtmbuild_init()
 
-catkin_package()
+catkin_package(
+  LIBRARIES MyDataSampleSkel MyDataSampleStub MySrvSampleSkel MySrvSampleStub
+  )
 
 # add_custom_command to compile idl/*.idl file into c++
 rtmbuild_genidl()
 
 add_custom_target(genidl ALL DEPENDS RTMBUILD_${PROJECT_NAME}_genrpc)
 ```
+`catkin_package(LIBRARIES`は、このパッケージに依存する別のパッケージが、idlから生成された型を利用できるようにするためのものである. `rtmbuild_genidl()`は、`RTMBUILD_${PROJECT_NAME}_genrpc`というターゲット名に、idlを変換するコマンドを対応付けている. `add_custom_target`で`RTMBUILD_${PROJECT_NAME}_genrpc`を`all`に追加することで、ビルド時にこのidlを変換するコマンドが実行される.
 
 これらを行ったパッケージが、[sample_idl](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_idl)にある.
 

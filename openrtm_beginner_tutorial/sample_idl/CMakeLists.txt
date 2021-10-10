@@ -6,7 +6,9 @@ find_package(catkin REQUIRED COMPONENTS rtmbuild)
 # initialize rtmbuild. Call BEFORE catkin_package
 rtmbuild_init()
 
-catkin_package()
+catkin_package(
+  LIBRARIES MyDataSampleSkel MyDataSampleStub MySrvSampleSkel MySrvSampleStub
+  )
 
 # add_custom_command to compile idl/*.idl file into c++
 rtmbuild_genidl()
