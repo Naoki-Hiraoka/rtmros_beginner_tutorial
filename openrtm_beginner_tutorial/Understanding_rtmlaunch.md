@@ -80,14 +80,14 @@ RTCTREE_NANESERVERS=localhost:2809
 ```
 `rtmlaunch.py`は、`rtconnect`タグを読み込むと、引数で与えられたポート同士を接続する.
 
-### 2.4 <rtactivate> tag
+### 2.4 rtactivate tag
 
 `rtmlaunch.py`は、`rtactivate`タグを読み込むと、引数で与えられたRTコンポーネントを実行中にする.
 - Attributes
   - component="instance_name"
     - 実行中にするコンポーネント名
 
-### 2.4 <rtconnect> tag
+### 2.5 rtconnect tag
 
 `rtmlaunch.py`は、`rtconnect`タグを読み込むと、引数で与えられたポート同士を接続する.
 - Attributes
@@ -104,7 +104,7 @@ RTCTREE_NANESERVERS=localhost:2809
 
 ネットワーク越しに通信する場合、`subscription_type="periodic" push_policy="new" push_rate="50.0", buffer_length="8"`などとして実際に利用されている.
 
-### 2.5 check connection/activation
+### 2.6 check connection/activation
 
 `rtmlaunch.py`は、10秒おきに`<rtactivate>`タグに設定されたコンポーネントの実行状態をチェックし、実行中で無ければ実行中にする. 同様に、10秒おきに`<rtconnect>`タグに設定されたポートの接続状態をチェックし、接続されて無ければ接続にする.
 
@@ -113,7 +113,7 @@ RTCTREE_NANESERVERS=localhost:2809
 RTC_CONNECTION_CHECK_ONCE=true
 ```
 
-### 2.6 rtmlaunching
+### 2.7 rtmlaunching
 
 以下のコマンドで実行できる.
 ```bash
