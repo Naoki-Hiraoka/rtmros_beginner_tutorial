@@ -123,7 +123,7 @@ RTC_CONNECTION_CHECK_ONCE=true
 - `if="$(arg foo)"` `unless="$(arg foo)"`は、rtconnectタグ・rtactivateタグ・深さ1のgroupタグのものしか解釈されず、`rtmlaunch.py`の引数に`foo=true`または`foo=false`を与える必要がある.
 - それ以外のsubstitution argsは利用不可
 
-### 2.7 rtmlaunching
+## 3 rtmlaunching
 
 以下のコマンドで実行できる.
 ```bash
