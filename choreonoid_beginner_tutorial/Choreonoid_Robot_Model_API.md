@@ -72,5 +72,5 @@
 - `const int id() const`: sensorId
 - `const Link* link() const`: 親リンク
 - `Isometry3::ConstLinearPart R_local() const`: センサの姿勢(parent local)
-- `Isometry3::ConstLinearPart localRotation() const`: センサの位置(parent local)
+- `Isometry3::ConstTranslationPart p_local() const`: センサの位置(parent local)
 - `const Isometry3& T_local() const`: センサの位置姿勢(parent local)
