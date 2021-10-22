@@ -23,7 +23,7 @@
 - `Vector3 calcCM()`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心位置を計算して返す. 事前に`calcForwardKinematics()`が必要.
 - `void calcMassMatrix(dmatrix& out_M)`: `6+n`x`6+n`の慣性行列を計算する.
 - `void calcInverseDynamics(Link* link, Vector3& out_f, Vector3& out_tau)`: 各`Link`の`q`,`dq`,`ddq`とルートリンクの`p`,`vo`,`dvo`,`R`,`w`,`dw`から、全`Link`の`u`を計算する.事前に`void calcForwardKinematics()`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
-- `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`calcForwardKinematics(True)`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
+- `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`calcForwardKinematics(True)`が必要. 
 - `JointPathPtr getJointPath(Link* baseLink, Link* targetLink)`: `baseLink`から`targetLink`への間にある関節の鎖を返す
 - `void calcCMJacobian(Link *base, dmatrix &J)`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心ヤコビアンを計算して返す. 事前に`calcForwardKinematics()`と`calcCM()`が必要.
 - `void calcAngularMomentumJacobian(Link *base, dmatrix &H)`: 各`Link`の`q`とルートリンクの`p`,`R`から、角運動量ヤコビアンを計算して返す. 事前に`calcForwardKinematics()`と`calcCM()`が必要.
