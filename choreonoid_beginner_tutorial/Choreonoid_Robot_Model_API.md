@@ -23,7 +23,7 @@
 - `void calcForwardKinematics(bool calcVelocity = false, bool calcAcceleration = false)`: 各`Link`の`q`とルートリンクの`p`,`R`から、全`Link`の`p`,`R`を計算する. `calcVelocity`がtrueなら、各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全`Link`の`p`,`v`,`R`,`w`を計算する. さらに`calcAcceleration`がtrueなら、各`Link`の`q`,`dq`,`ddq`とルートリンクの`p`,`v`,`dv`,`R`,`w`,`dw`から、全`Link`の`p`,`v`,`dv`,`R`,`w`,`dw`を計算する.
 - `const Vector3& calcCenterOfMass()`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心位置を計算して返す. 事前に`calcForwardKinematics()`が必要.
 - `const Vector3& centerOfMass() const`: キャッシュされた重心位置を返す.
-- `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`void calcForwardKinematics(True)`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる.
+- `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`void calcForwardKinematics(True)`が必要. 
 
 ## ユーティリティー関数
 - `void cnoid::calcMassMatrix(Body* body, const Vector3& g, MatrixXd& out_M)`: `6+n`x`6+n`の慣性行列を計算する. release-1.7にはバグがある. (`#include <cnoid/MassMatrix>`)
