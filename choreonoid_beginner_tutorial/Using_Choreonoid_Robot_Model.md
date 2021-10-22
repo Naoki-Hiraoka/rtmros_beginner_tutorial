@@ -65,7 +65,7 @@ int main(void){
 
 ここでモデルをロードしている.
 
-`cnoid::Body`クラスがロボットモデルに対応したクラスである. `cnoid::BodyPtr`クラスはc++のsharedポインタのような役割を果たすが、c++のsharedポインタと比べて、生のポインタで渡してもオブジェクトカウントが正しく増減するという性質を持つ.
+`cnoid::Body`クラスがロボットモデルに対応したクラスである. `cnoid::BodyPtr`クラスはc++のsharedポインタのような役割を果たすが、c++のsharedポインタと比べて、生のポインタで渡してもオブジェクトカウントが正しく増減するという性質を持つ([公式ドキュメント](https://choreonoid.org/ja/documents/latest/plugin-development/referenced.html)).
 
 ```c++
   // print robot names
