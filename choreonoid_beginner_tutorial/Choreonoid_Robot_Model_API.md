@@ -26,7 +26,7 @@
 - `void calcTotalMomentum(Vector3& out_P, Vector3& out_L)`: 各`Link`の`q`,`dq`とルートリンクの`p`,`v`,`R`,`w`から、全身の運動量とルートリンク周りの角運動量を計算する.事前に`void calcForwardKinematics(True)`が必要. 
 
 ## ユーティリティー関数
-- `void cnoid::calcMassMatrix(Body* body, const Vector3& g, MatrixXd& out_M)`: `6+n`x`6+n`の慣性行列を計算する. 事前に`void calcForwardKinematics()`と`calcCenterOfMass()`が必要.release-1.7にはバグがあるが、最新の開発版では修正されている. (`#include <cnoid/MassMatrix>`)
+- `void cnoid::calcMassMatrix(Body* body, const Vector3& g, MatrixXd& out_M)`: `6+n`x`6+n`の慣性行列を計算する. 事前に`void calcForwardKinematics()`と`calcCenterOfMass()`が必要.release-1.7にはバグがあるが、最新の開発版では修正されている. (`#include <cnoid/src/Body/MassMatrix.h>`)
 - `void cnoid::Vector6 cnoid::calcInverseDynamics(Link* link)`: 各`Link`の`q`,`dq`,`ddq`とルートリンクの`p`,`vo`,`dvo`,`R`,`w`,`dw`から、全`Link`の`u`を計算する.事前に`void calcForwardKinematics()`が必要. 重力を考慮するにはルートリンクを鉛直上向きに重力加速度で加速させる. (`#include <cnoid/src/Body/InverseDynamics.h>`)
 - `JointPathPtr cnoid::getJointPath(Link* baseLink, Link* targetLink)`: `baseLink`から`targetLink`への間にある関節の鎖を返す
 - `void cnoid::calcCMJacobian(Body* body, Link* base, Eigen::MatrixXd& J)`: 各`Link`の`q`とルートリンクの`p`,`R`から、重心ヤコビアンを計算して返す. 事前に`void calcForwardKinematics()`と`calcCenterOfMass()`が必要. (`#include <cnoid/Jacobian>`)
