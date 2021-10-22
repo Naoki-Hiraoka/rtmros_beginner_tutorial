@@ -7,3 +7,5 @@
 2. [Using Choreonoid Robot Model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/choreonoid_beginner_tutorial/Using_Choreonoid_Robot_Model.md)
 
 3. [Choreonoid Robot Model API](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/choreonoid_beginner_tutorial/Choreonoid_Robot_Model_API.md)
+
+2. [Using Choreonoid Robot Model (Python)](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/choreonoid_beginner_tutorial/Using_Choreonoid_Robot_Model_Python.md)
