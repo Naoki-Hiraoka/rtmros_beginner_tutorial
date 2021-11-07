@@ -57,7 +57,7 @@ publisher.get_owned_contexts()[0].add_component(subscriber)
 ```bash
 $ rtact localhost:15005/Publisher0
 $ rtact localhost:15005/Subscriber0 -e 1
-`
+```
 と`-e 1`オプションをつける必要がある.
 
 ## 3. connection
