@@ -6,6 +6,8 @@ Pythonのプログラムで, モデルを読み込む方法を説明する.
 
 サンプルコードは[sample_choreonoid_model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/choreonoid_beginner_tutorial/sample_choreonoid_model)にある
 
+choreonoidはデフォルトでpython3を使用するため、Ubuntu18以下のROS環境などのpython2を使用する環境では不具合がある.コンパイル時に`-DUSE_PYTHON3=OFF`オプションをつけることでpython2に対応できる.
+
 ## 2. The Code
 
 ここでは、`/opt/ros/melodic/share/openhrp3/share/OpenHRP-3.1/sample/model/sample1.wrl`にあるSampleRobotモデルを読み込むコードで説明する. ROSのDISTROが違う場合にはパスを修正すること.
