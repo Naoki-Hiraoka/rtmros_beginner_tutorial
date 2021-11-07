@@ -52,7 +52,7 @@ module sample_idl
 | octet | octet型 | octet octetVariable; |
 | longlong | longlong型整数 | longlong longlongVariable; |
 | ulonglong | unsinged longlong型整数 | ulonglong ulonglongVariable; |
-| sequence<T> | シーケンス型 | sequence<double> doubleSeqVariable; |
+| sequence\<T\> | シーケンス型 | sequence\<double\> doubleSeqVariable; |
 | string | 文字列型 | string stringVariable; |
 
 - ユーザ定義型
