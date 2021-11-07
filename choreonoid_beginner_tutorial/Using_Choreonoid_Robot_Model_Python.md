@@ -6,7 +6,7 @@ Pythonのプログラムで, モデルを読み込む方法を説明する.
 
 サンプルコードは[sample_choreonoid_model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/choreonoid_beginner_tutorial/sample_choreonoid_model)にある
 
-choreonoidはデフォルトでpython3を使用するため、Ubuntu18以下のROS環境などのpython2を使用する環境では不具合がある.コンパイル時に`-DUSE_PYTHON3=OFF`オプションをつけることでpython2に対応できる.
+choreonoidはデフォルトでpython3を使用するため、Ubuntu18以下のROS環境などのpython2を使用する環境では不具合がある.choreonoidのコンパイル時に`-DUSE_PYTHON3=OFF`オプションをつけることでpython2に対応できる.
 
 ## 2. The Code
 
