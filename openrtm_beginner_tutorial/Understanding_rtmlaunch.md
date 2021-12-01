@@ -30,7 +30,7 @@ Usage:
 rosrun openrtm_tools rtmlaunch.py [fullfilepath.launch]
 ```
 
-デフォルトではポート15005のネームサーバーに接続するが、環境変数`RTCTREE_NANESERVERS`をセットすることで変更可能.
+デフォルトではポート15005のネームサーバーに接続するが、環境変数`RTCTREE_NAMESERVERS`をセットすることで変更可能.
 ```bash
 RTCTREE_NANESERVERS=localhost:2809
 ```
