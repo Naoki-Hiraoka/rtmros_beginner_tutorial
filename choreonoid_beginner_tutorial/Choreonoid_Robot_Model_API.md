@@ -9,9 +9,9 @@
 ## cnoid::Bodyクラス
 ### 主なメンバ関数
 - `const std::string& name() const`: ロボット名を返す.
-- `int numJoints() const`: VRMLファイルで`jointId`が振られている関節の総数を返す.
-- `int numVirtualJoints() const`: VRMLファイルで`jointId`が振られていない関節の総数を返す.
-- `int numAllJoints() const`: 関節の総数を返す.
+- `int numJoints() const`: VRMLファイルで`jointId`が振られているfixedでない関節の総数を返す.
+- `int numVirtualJoints() const`: VRMLファイルで`jointId`が振られていないfixedでない関節の総数を返す.
+- `int numAllJoints() const`: fixedでない関節の総数を返す.
 - `Link* joint(int id) const`: 指定した`jointId`の`Link`を返す.
 - `int numLinks() const`: 全`Link`の総数を返す.
 - `Link* link(int index) const`: 指定された番目の`Link`を返す.
