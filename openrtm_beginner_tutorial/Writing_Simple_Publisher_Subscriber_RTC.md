@@ -553,3 +553,7 @@ rtmlaunch sample_io_rtc subscriber.launch
 ```
 rtmlaunch sample_io_rtc publisher.launch
 ```
+
+## Python Version
+
+python版のサンプルコードは[sample_io_rtc_python](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc_python)にある.

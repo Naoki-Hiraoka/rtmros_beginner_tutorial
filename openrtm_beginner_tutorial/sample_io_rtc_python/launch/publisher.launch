@@ -1,0 +1,13 @@
+<launch>
+  <arg name="openrtm_args" value='-o "corba.nameservers:localhost:15005" -o "naming.formats:%n.rtc" ' />
+
+  <!-- RTC SeqIn/SeqOut sample -->
+  <node name="publisher" pkg="sample_io_rtc_python" type="publisher.py" args='$(arg openrtm_args)' output="screen"/>
+
+  <!-- BEGIN:openrtm connection -->
+  <node name="rtmlaunch_py" pkg="openrtm_tools" type="rtmlaunch.py"
+        args="$(find sample_io_rtc_python)/launch/publisher.launch" />
+  <rtactivate component="Publisher0.rtc" />
+  <rtconnect from="Publisher0.rtc:chatter"     to="Subscriber0.rtc:listener" />
+  <!-- END:openrtm connection -->
+</launch>
