@@ -554,6 +554,23 @@ rtmlaunch sample_io_rtc subscriber.launch
 rtmlaunch sample_io_rtc publisher.launch
 ```
 
-## Python Version
+# Python Version
 
 python版のサンプルコードは[sample_io_rtc_python](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_io_rtc_python)にある.
+
+### Build
+
+以下のスクリプトでビルドできる
+```
+catkin build sample_io_rtc_python
+```
+
+### Execute
+ターミナルで次を実行
+```
+rtmlaunch sample_io_rtc_python subscriber.launch
+```
+別のターミナルで次を実行
+```
+rtmlaunch sample_io_rtc_python publisher.launch
+```
