@@ -8,7 +8,8 @@
 
 ## cnoid::Bodyクラス
 ### 主なメンバ関数
-- `const std::string& name() const`: ロボット名を返す.
+- `const std::string& name() const`: ロボット名を返す. 通常は空文字列になっている.
+- `const std::string& modelName() const`: ロボット名を返す. 通常はモデルファイル上のロボット名になっている.
 - `int numJoints() const`: VRMLファイルで`jointId`が振られているfixedでない関節の総数を返す.
 - `int numVirtualJoints() const`: VRMLファイルで`jointId`が振られていないfixedでない関節の総数を返す.
 - `int numAllJoints() const`: fixedでない関節の総数を返す.
