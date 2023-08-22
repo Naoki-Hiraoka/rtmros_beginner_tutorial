@@ -80,7 +80,7 @@ SequenceOutComponent0.rtc  Inactive
 +DataOutPort: DoubleSeq
 ```
 
-`rtls`はROSの`rosnode list`と同様の役割を果たし、RTコンポーネントの情報を表示する.
+`rtcat`はROSの`rosnode info`と同様の役割を果たし、RTコンポーネントの情報を表示する.
 
 `rtcat`コマンドの詳細は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/toolmanuals/rtshell/command_reference/rtcat)参照
 
