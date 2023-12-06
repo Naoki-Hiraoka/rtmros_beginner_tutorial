@@ -432,7 +432,7 @@ RTC::ReturnCode_t Subscriber::onExecute(RTC::UniqueId ec_id){
   if(m_dataIn.isNew()){
     m_dataIn.read();
 ```
-`isNew`はポートに新しいデータが届いているかどうかを返す. `read`を呼ぶとポートに届いたデータを実際に`m_data`に書き込む.
+`isNew`はポートに新しいデータが届いているかどうかを返す. (ROSのサブスクライバのqueueが空かどうかを返すイメージ) `read`を呼ぶとポートに届いたデータを実際に`m_data`に書き込む.
 
 ```c++
     std::cout << "Subscribe: ";
