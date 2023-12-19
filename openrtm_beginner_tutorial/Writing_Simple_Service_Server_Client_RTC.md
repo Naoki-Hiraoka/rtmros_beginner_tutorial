@@ -126,7 +126,7 @@ extern "C"{
 class Server;
 
 class ServerService_impl
-  : public virtual POA_MySample::MyOriginalService,
+  : public virtual POA_sample_service_rtc::MyOriginalService,
     public virtual PortableServer::RefCountServantBase
 {
 public:
