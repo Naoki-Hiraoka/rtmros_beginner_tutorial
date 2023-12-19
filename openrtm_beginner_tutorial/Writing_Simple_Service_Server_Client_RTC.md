@@ -268,7 +268,7 @@ extern "C"{
 
 ```c++
 class ServerService_impl
-  : public virtual POA_MySample::MyOriginalService,
+  : public virtual POA_sample_service_rtc::MyOriginalService,
     public virtual PortableServer::RefCountServantBase
 ```
 インターフェースは、idlで定義されたインターフェースのクラスと、`PortableServer::RefCountServantBase`の2つのクラスを継承する.
