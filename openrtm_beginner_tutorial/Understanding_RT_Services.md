@@ -35,9 +35,27 @@ rtact localhost:15005/MyServiceConsumer0.rtc
 
 ServiceはROSのサービスと同様の役割を果たす.
 
-`rtcat localhost:15005/MyServiceProvider0.rtc -l`を実行すると`MyServiceProvider0.rtc`には`MyService`という名前のServicePoirtがあることが分かり、`Polarity Provided`と表示されていることからサーバー側であることが分かる.
+`rtcat localhost:15005/MyServiceProvider0.rtc -l`を実行すると、次のように表示される(一部抜粋)
+```
+-CorbaPort: MyService
+  port.port_type  CorbaPort
+  Interface:
+    Instance name  myservice0
+    Type name      MyService
+    Polarity       Provided
+```
+`MyServiceProvider0.rtc`には`MyService`というポート前のServicePortがあることが分かり、`Polarity Provided`と表示されていることからサーバー側であることが分かる. サービスの型が`MyService`でインスタンス名が`myservice0`であり、これらはサーバー側とクライアント側で一致している必要がある。
 
-`rtcat localhost:15005/MyServiceConsumer0.rtc -l`を実行すると`MyServiceConsumer0.rtc`には`MyService`という名前のServicePoirtがあることが分かり、`Polarity Required`と表示されていることからクライアント側であることが分かる.
+`rtcat localhost:15005/MyServiceConsumer0.rtc -l`を実行すると次のように表示される(一部抜粋)
+```
+-CorbaPort: MyService
+  port.port_type  CorbaPort
+  Interface:
+    Instance name  myservice0
+    Type name      MyService
+    Polarity       Required
+```
+`MyServiceConsumer0.rtc`には`MyService`という名前のServicePortがあることが分かり、`Polarity Required`と表示されていることからクライアント側であることが分かる.サービスの型が`MyService`でインスタンス名が`myservice0`であり、これらはサーバー側とクライアント側で一致している必要がある。
 
 ## 2.2 rtcon
 
