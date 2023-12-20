@@ -10,6 +10,6 @@
         args="$(find sample_service_bridge)/launch/server.launch" />
   <rtactivate component="MyServer0.rtc" />
   <rtactivate component="MyBridgeServiceROSBridge.rtc" />
-  <rtconnect from="MyServer0.rtc:service0"     to="MyBridgeServiceROSBridge.rtc:MyBridgeService" />
+  <rtconnect from="MyServer0.rtc:MyServerService"     to="MyBridgeServiceROSBridge.rtc:MyBridgeService" />
   <!-- END:openrtm connection -->
 </launch>

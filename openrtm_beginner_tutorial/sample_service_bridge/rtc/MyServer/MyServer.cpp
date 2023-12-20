@@ -3,7 +3,7 @@
 
 MyServer::MyServer(RTC::Manager* manager):
   RTC::DataFlowComponentBase(manager),
-  m_MyServerServicePort("service0")
+  m_MyServerServicePort("MyServerService")
 {
   m_service0.setComponent(this);
 }
