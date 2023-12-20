@@ -217,7 +217,7 @@ RTC::ReturnCode_t Server::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-`registerProvider`で`m_ServerServicePort`を`m_service0`と対応付けしている. これによって、portからサービスが呼ばれると, `m_ServerServicePort`は`m_service0`の該当するメンバ関数を呼ぶようになる. `registerProvider`の第一引数`service0`は単なる名前であり、何を与えても実用上あまり重要ではない. `registerProvider`の第二引数にはインターフェースの型名を与える.
+`registerProvider`で`m_ServerServicePort`を`m_service0`と対応付けしている. これによって、portからサービスが呼ばれると, `m_ServerServicePort`は`m_service0`の該当するメンバ関数を呼ぶようになる. `registerProvider`の第一引数`service0`はインスタンス名、第二引数にはサービスのインターフェースの型名であり、これらはサーバー側とクライアント側で同じである必要がある。
 
 `addPort`でこのRTCに実際にサービスポートを生成している.
 
@@ -535,7 +535,7 @@ RTC::ReturnCode_t Client::onInitialize(){
   return RTC::RTC_OK;
 }
 ```
-`registerConsumer`で`m_ClientServicePort`を`m_consumer`と対応付けしている. これによって、`m_consumer`のメンバ関数を呼ぶと, portからサーバーにサービスコールするようになる. `registerConsumer`の第一引数`service0`は単なる名前であり、何を与えても実用上あまり重要ではない. `registerProvider`の第二引数にはインターフェースの型名を与える.
+`registerConsumer`で`m_ClientServicePort`を`m_consumer`と対応付けしている. これによって、`m_consumer`のメンバ関数を呼ぶと, portからサーバーにサービスコールするようになる. `registerConsumer`の第一引数`service0`はインスタンス名、第二引数にはサービスのインターフェースの型名であり、これらはサーバー側とクライアント側で同じである必要がある。
 
 `addPort`で実際にサービスポートを生成している.
 
