@@ -44,7 +44,7 @@ ServiceはROSのサービスと同様の役割を果たす.
     Type name      MyService
     Polarity       Provided
 ```
-`MyServiceProvider0.rtc`には`MyService`というポート前のServicePortがあることが分かり、`Polarity Provided`と表示されていることからサーバー側であることが分かる. サービスの型が`MyService`でインスタンス名が`myservice0`であり、これらはサーバー側とクライアント側で一致している必要がある。
+`MyServiceProvider0.rtc`には`MyService`というポート名のServicePortがあることが分かり、`Polarity Provided`と表示されていることからサーバー側であることが分かる. サービスの型が`MyService`でインスタンス名が`myservice0`であり、これらはサーバー側とクライアント側で一致している必要がある。
 
 `rtcat localhost:15005/MyServiceConsumer0.rtc -l`を実行すると次のように表示される(一部抜粋)
 ```
@@ -55,13 +55,13 @@ ServiceはROSのサービスと同様の役割を果たす.
     Type name      MyService
     Polarity       Required
 ```
-`MyServiceConsumer0.rtc`には`MyService`という名前のServicePortがあることが分かり、`Polarity Required`と表示されていることからクライアント側であることが分かる.サービスの型が`MyService`でインスタンス名が`myservice0`であり、これらはサーバー側とクライアント側で一致している必要がある。
+`MyServiceConsumer0.rtc`には`MyService`というポート名のServicePortがあることが分かり、`Polarity Required`と表示されていることからクライアント側であることが分かる.サービスの型が`MyService`でインスタンス名が`myservice0`であり、これらはサーバー側とクライアント側で一致している必要がある。
 
 ## 2.2 rtcon
 
-ROSでは、同じトピック名のサーバーとクライアントを起動すると勝手に通信が始まる. ところがOpenRTMでは、ServicePortを用意するだけでは通信が始まらない. また、Port名は同じであろうとなかろうと関係ない.
+ROSでは、同じトピック名のサーバーとクライアントを起動すると勝手に通信が始まる. ところがOpenRTMでは、ServicePortを用意するだけでは通信が始まらない. また、ポート名は同じであろうとなかろうと関係ない.
 
-OpenRTMでは、通信させたいPortどうしを明示的に接続する必要がある. 新しいターミナルを開き以下を実行する.
+OpenRTMでは、通信させたいPortどうしをポート名を指定して明示的に接続する必要がある. 新しいターミナルを開き以下を実行する.
 ```
 rtcon localhost:15005/MyServiceProvider0.rtc:MyService localhost:15005/MyServiceConsumer0.rtc:MyService
 ```
