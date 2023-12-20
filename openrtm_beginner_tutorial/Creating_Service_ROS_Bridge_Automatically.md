@@ -40,11 +40,16 @@ rtmbuild_genbridge()
 
 ### Service Ports(OpenRTM)
 - `<インタフェース名>`
-  サービスクライアント. ROSからサービスが呼ばれると、このportに同名のサービスコールをする.
+  サービスクライアント. ROSからサービスが呼ばれると、このportに同名のサービスコールをする. idlに書かれたinterface名がそのままポート名になる。インスタンス名はデフォルトでは"service0"で、rosparam(`~service_port`)で指定できる.
 
 ## 4. Run Sample
 
 [sample_service_bridge](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_service_bridge)にサンプルがある.
+
+このサンプルでは、3つのことをしている.
+1. idlの定義 (idl/MyBridgeService.idl)
+2. ROSBridgeの自動生成 (CMakeLists.txtにて)
+3. サーバーRTCの作成 (rtc/MyServer)
 
 このサンプルではidlファイルに次のようなインターフェースを定義している.
 ```
@@ -58,9 +63,10 @@ module sample_service_bridge
   };
 };
 ```
-また、[Writing Simple Service Server Client RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Service_Server_Client_RTC.md)と同様にしてこのインターフェースに対応したサーバーのRTコンポーネントを作成している.
 
-ROSブリッジを利用することで、ROSのレイヤからサービスコールをして、このRTコンポーネントの`addTwoInts`を呼ぶ.
+CMakeLists.txtに`rtmbuild_genbridge()`を記述することで、このインターフェースに対応したROSBridgeを自動生成している。
+
+また、rtcディレクトリ以下に、[Writing Simple Service Server Client RTC](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Writing_Simple_Service_Server_Client_RTC.md)と同様にしてこのインターフェースに対応したサーバーのRTコンポーネントを作成している. ROSBridgeを経由して、ROSのレイヤからサービスコールをして、このRTコンポーネントの`addTwoInts`を呼ぶ. 
 
 ビルド
 ```bash
