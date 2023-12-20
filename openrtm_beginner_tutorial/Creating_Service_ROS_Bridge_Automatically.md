@@ -40,7 +40,7 @@ rtmbuild_genbridge()
 
 ### Service Ports(OpenRTM)
 - `<インタフェース名>`
-  サービスクライアント. ROSからサービスが呼ばれると、このportに同名のサービスコールをする. idlに書かれたinterface名がそのままポート名になる。インスタンス名はデフォルトでは"service0"で、rosparam(`~service_port`)で指定できる.
+  サービスクライアント. ROSからサービスが呼ばれると、このportにつながったOpenRTMのサービスサーバーにサービスコールをする. idlに書かれたinterface名がそのままポート名になる。インスタンス名はデフォルトでは"service0"で、rosparam(`~service_port`)で指定できる.
 
 ## 4. Run Sample
 
