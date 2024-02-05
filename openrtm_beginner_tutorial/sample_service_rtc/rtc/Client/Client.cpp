@@ -30,6 +30,7 @@ RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
     RTC::TimedDoubleSeq b3; b3.data.length(3); for(size_t i=0;i<b3.data.length();i++) b3.data[i]=1;
     RTC::TimedDoubleSeq* sum3;
     m_consumer->addTwoTimedDoubleSeq(a3,b3,sum3);
+    delete sum3;
   }
 
   return RTC::RTC_OK;
