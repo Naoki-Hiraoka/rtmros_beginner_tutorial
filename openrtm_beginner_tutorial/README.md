@@ -2,7 +2,7 @@
 
 ROSのチュートリアルを終えていることを想定している.
 
-[公式のドキュメントはこちら](https://www.openrtm.org/openrtm/ja/doc/developersguide)
+公式のドキュメントは[こちら(OpenRTM_AIST)](https://www.openrtm.org/openrtm/ja/doc/developersguide)と[こちら(OMG)](https://www.omg.org/spec/RTC/1.1)
 
 1. [Installing and Configuring Your OpenRTM-ROS Environment](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/Installing_and_Configuring_Your_OpenRTM-ROS_Environment.md)
 
