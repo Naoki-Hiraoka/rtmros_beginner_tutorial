@@ -102,7 +102,11 @@ RTCTREE_NAMESERVERS=localhost:2809
 
 各引数の意味は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/dataport)参照.
 
-ネットワーク越しに通信する場合、`subscription_type="periodic" push_policy="new" push_rate="50.0", buffer_length="8"`などとして実際に利用されている.
+高周期低遅延で直列実行する制御モジュール間の通信は、`subscription_type="flush" push_policy="new" push_rate="1000.0" buffer_length="1"`などとする.
+
+普通の制御モジュール間の通信は、`subscription_type="new" push_policy="new" push_rate="50.0" buffer_length="1"`などとする.
+
+ネットワーク越しに通信する場合、`subscription_type="periodic" push_policy="new" push_rate="50.0", buffer_length="8"`などとする.
 
 ### 2.6 Tips for rtmlaunch.py
 
