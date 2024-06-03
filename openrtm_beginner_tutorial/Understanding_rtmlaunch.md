@@ -98,9 +98,29 @@ RTCTREE_NAMESERVERS=localhost:2809
   - subscription_type="flush|new|periodic" (default "flush")
   - push_policy="all|fifo|skip|new" (default "all")
   - push_rate="double" (default 50.0)
-  - buffer_length="int" (default "")
+  - buffer_length="int" (default "8")
 
 各引数の意味は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/dataport)参照.
+
+subscription_type
+| 値 | 意味 |
+| ---- | ---- |
+| new | 送信側でwrite()関数が呼ばれると、送信バッファにデータが書き込まれる. 送信バッファのデータは別スレッドでできるだけ早くに受信側の受信バッファに送られる. ROSのpublisherと似ている. |
+| flush | 送信側でwrite()関数から戻った時にはデータが受信側の受信バッファに届いていることが保証される. 複数のRTCを直列に実行する場合には、次のRTCの処理が始まる前に次のRTCへのデータ送信が完了している必要があるので適する. 異なるPC間で通信する場合などで通信に時間がかかる場合には、write()関数で長い時間待たされることになるので適さない. |
+| periodic | 送信側でwrite()関数が呼ばれると、送信バッファにデータが書き込まれる. 送信バッファのデータは、別スレッドで周期的(push_rate)に受信側の受信バッファに送られる. 通信の周期を落として通信量を減らしたい場合に用いる. ROSのtopic_tools/throttleと似ている. |
+
+push_policy
+| 値 | 意味 |
+| ---- | ---- |
+| all | 送信バッファに残っているデータをすべて送信 |
+| new | 送信バッファの最新値のみ送信し、古い値は捨てる |
+| fifo | 先入れ先だし方式で、送信バッファのデータを一つずつ送信 |
+| skip | n 個おきに送信バッファのデータを送信し、それ以外は捨てる(どうやってnを設定するんだろう?) |
+
+buffer_length
+| 意味 |
+| ---- |
+| 送信バッファと受信バッファのサイズを設定する.受信側でread()を呼ぶと受信バッファから一番古い値が取り出される.常に最新のデータのみを利用したい場合は1に設定すること.ROSのサブスクライバのqueue_sizeと似ている. |
 
 高周期低遅延で直列実行する制御モジュール間の通信は、`subscription_type="flush" push_policy="new" push_rate="1000.0" buffer_length="1"`などとする.
 
