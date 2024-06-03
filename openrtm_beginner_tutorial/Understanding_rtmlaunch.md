@@ -102,6 +102,8 @@ RTCTREE_NAMESERVERS=localhost:2809
 
 各引数の意味は[公式ドキュメント](https://www.openrtm.org/openrtm/ja/doc/developersguide/basic_rtc_programming/dataport)参照.
 
+#### 2.5.1 rtconnectの各引数の詳細
+
 subscription_type
 | 値 | 意味 |
 | ---- | ---- |
