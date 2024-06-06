@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sample_model_conversion</name>
+  <version>0.0.0</version>
+  <description>sample_model_conversion package</description>
+
+  <maintainer email="hiraoka@jsk.imi.i.u-tokyo.ac.jp">hiraoka</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roseus</depend>
+  <depend>euscollada</depend>
+  <depend>collada_urdf</depend>
+  <depend>collada_urdf_jsk_patch</depend>
+  <depend>hrpsys_ros_bridge</depend>
+  <depend>openhrp3</depend>
+</package>

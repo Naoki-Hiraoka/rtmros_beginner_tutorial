@@ -1,0 +1,22 @@
+##
+## - collada_joint_name : euslisp_joint_name (start with :)
+##
+wheels:
+  - R_WHEEL_JOINT  : r-wheel-joint
+  - L_WHEEL_JOINT  : l-wheel-joint
+tail:
+  - TAIL_JOINT0  : tail-joint0
+  - TAIL_JOINT1  : tail-joint1
+  - TAIL_JOINT2  : tail-joint2
+  - TAIL_JOINT3  : tail-joint3
+  - TAIL_JOINT4  : tail-joint4
+  - TAIL_JOINT5  : tail-joint5
+hand:
+  - FINGER_JOINT0  : finger-joint0
+  - FINGER_JOINT1  : finger-joint1
+
+##
+## reset-pose
+##
+angle-vector:
+  reset-pose : [0.0, 0.0, 0.0, 90.0, -90.0, 0.0, 0.0, 0.0, 0.0, 0.0]
