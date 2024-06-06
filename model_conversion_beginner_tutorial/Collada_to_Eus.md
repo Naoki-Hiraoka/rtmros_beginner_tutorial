@@ -4,7 +4,7 @@
 
 ここでは、[VRML to Collada](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/model_conversion_beginner_tutorial/VRML_to_Collada.md)で生成した`/tmp/SampleRobot.dae`を変換する例で説明する.
 
-COLLADAモデルをEusモデルに変換するには、変換元となるCOLLADAモデルに加えて、設定ファイル(`yaml`)が必要である. [samplerobot.yaml](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/model_conversion_beginner_tutorial/samplerobot.yaml)を用意してあるので、`/tmp/samplerobot.yaml`にコピーして配置しておくこと.
+COLLADAモデルをEusモデルに変換するには、変換元となるCOLLADAモデルに加えて、設定ファイル(`yaml`)が必要である. [samplerobot.yaml](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/model_conversion_beginner_tutorial/sample_model_conversion/models/samplerobot.yaml)を用意してあるので、`/tmp/samplerobot.yaml`にコピーして配置しておくこと.
 ```bash
 rosrun euscollada collada2eus -I /tmp/SampleRobot.dae -C /tmp/samplerobot.yaml -O /tmp/samplerobot.l
 ```

@@ -12,4 +12,4 @@ openhrp-export-collada -i /opt/ros/melodic/share/openhrp3/share/OpenHRP-3.1/samp
 
 - Options
   - `-i`: 変換元のVRMLファイルのパスを指定する
-  - '-o': 変換先のCOLLDAファイルのパスを指定する
+  - `-o`: 変換先のCOLLDAファイルのパスを指定する
