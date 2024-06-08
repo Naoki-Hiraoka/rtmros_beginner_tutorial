@@ -19,3 +19,14 @@
 catkin build sample_model_conversion
 ```
 modelsディレクトリ以下に、変換結果が生成される.
+
+## Tips
+
+cmakeの依存関係の記述が不十分であるため、入力のファイルに変更があった場合にうまく反映できない場合がある.
+```
+cd YOUR_PACKAGE
+git clean -dxf .
+catkin clean YOUR_PACKAGE
+cakin build YOUR_PACKAGE
+```
+として、src、build両方を初期化してからビルドし直すと良い

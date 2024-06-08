@@ -144,6 +144,19 @@ from sample_idl import MyDataSample_idl
 sample_idl.MyData
 ```
 
-### 2.5 Use (for shell)
+### 2.5  Tips
+
+#### 2.5.1 for shell print
 
 (独自に定義した型を`rtprint`で表示しようとするとうまくいかない場合がある.　どうしてもportから流れている独自定義型をプリントしたい場合は、出力しているRTCを`rtcat -l`するとよい)
+
+#### 2.5.2 build error
+
+rtmbuildはcmakeの依存関係の記述が不十分であるため、idlファイルに変更があった場合にうまく反映できない場合がある.
+```
+cd YOUR_PACKAGE
+git clean -dxf .
+catkin clean YOUR_PACKAGE
+cakin build YOUR_PACKAGE
+```
+として、src、build両方を初期化してからビルドし直すと良い
