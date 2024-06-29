@@ -9,3 +9,5 @@ Model Conversion Beginner Tutorial
 4. [Collada to Eus](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/model_conversion_beginner_tutorial/Collada_to_Eus.md)
 
 5. [compile_robot_model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/model_conversion_beginner_tutorial/compile_robot_model.md)
+
+6. [VRML model](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/model_conversion_beginner_tutorial/VRML_model.md)
