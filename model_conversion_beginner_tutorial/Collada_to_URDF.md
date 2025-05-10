@@ -8,8 +8,6 @@
 rosrun collada_urdf_jsk_patch collada_to_urdf /tmp/SampleRobot.dae -O /tmp/SampleRobot.urdf
 ```
 
-`openhrp-export-collada`は、openHRP3をインストールすると使用可能になるスクリプトである.
-
 - Options
   - 第一引数: 変換元のCOLLADAファイルのパスを指定する
   - '-O ファイルパス': 変換先のURDFファイルのパスを指定する
