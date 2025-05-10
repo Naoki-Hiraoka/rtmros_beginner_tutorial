@@ -124,9 +124,9 @@ buffer_length
 | ---- |
 | 送信バッファと受信バッファのサイズを設定する.受信側でread()を呼ぶと受信バッファから一番古い値が取り出される.常に最新のデータのみを利用したい場合は1に設定すること.ROSのサブスクライバのqueue_sizeと似ている. |
 
-高周期低遅延で直列実行する制御モジュール間の通信は、`subscription_type="flush" push_policy="new" push_rate="1000.0" buffer_length="1"`などとする.
+高周期低遅延で直列実行する制御モジュール間の通信は、`subscription_type="flush" push_policy="new" buffer_length="1"`などとする.
 
-普通の制御モジュール間の通信は、`subscription_type="new" push_policy="new" push_rate="50.0" buffer_length="1"`などとする.
+普通の制御モジュール間の通信は、`subscription_type="new" push_policy="new" buffer_length="1"`などとする.
 
 ネットワーク越しに通信する場合、`subscription_type="periodic" push_policy="new" push_rate="50.0", buffer_length="8"`などとする.
 
