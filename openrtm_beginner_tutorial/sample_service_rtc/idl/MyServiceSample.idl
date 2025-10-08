@@ -10,5 +10,8 @@ module sample_service_rtc
 
     boolean addTwoTimedDoubleSeq(in RTC::TimedDoubleSeq a, in RTC::TimedDoubleSeq b, out RTC::TimedDoubleSeq sum);
 
+    boolean addTwoString(in string a, in string b, out string sum);
+
+    boolean addTwoTimedString(in RTC::TimedString a, in RTC::TimedString b, out RTC::TimedString sum);
   };
 };

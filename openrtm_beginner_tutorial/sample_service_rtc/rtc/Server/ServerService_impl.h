@@ -15,6 +15,8 @@ public:
   CORBA::Long addTwoInts(CORBA::Long a, CORBA::Long b);
   CORBA::Boolean addTwoTime(const RTC::Time& a, const RTC::Time& b, RTC::Time_out sum);
   CORBA::Boolean addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq_out sum);
+  CORBA::Boolean addTwoString(const char* a, const char* b, CORBA::String_out sum);
+  CORBA::Boolean addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString_out sum);
 
   void setComponent(Server *i_component);
 private:

@@ -14,6 +14,9 @@ module sample_service_rtc
 
     boolean addTwoTimedDoubleSeq(in RTC::TimedDoubleSeq a, in RTC::TimedDoubleSeq b, out RTC::TimedDoubleSeq sum);
 
+    boolean addTwoString(in string a, in string b, out string sum);
+
+    boolean addTwoTimedString(in RTC::TimedString a, in RTC::TimedString b, out RTC::TimedString sum);
   };
 };
 ```
@@ -47,6 +50,8 @@ public:
   CORBA::Long addTwoInts(CORBA::Long a, CORBA::Long b);
   CORBA::Boolean addTwoTime(const RTC::Time& a, const RTC::Time& b, RTC::Time& sum);
   CORBA::Boolean addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq& sum);
+  CORBA::Boolean addTwoString(const char*& a, const char*& b, char*& sum);
+  CORBA::Boolean addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString& sum);
 };
 
 
@@ -94,6 +99,30 @@ CORBA::Boolean Server::addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const 
   return true;
 }
 
+CORBA::Boolean Server::addTwoString(const char*& a, const char*& b, char*& sum) {
+  sum = CORBA::string_alloc(strlen(a)+strlen(b));
+  strcpy(sum,a);
+  strcpy(sum+strlen(a),b);
+  return true;
+}
+
+int loop = 0;
+CORBA::Boolean Server::addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString& sum) {
+  // どちらの方法も可. 交互に実行するサンプル
+  if(loop % 2 == 0){
+    sum.data = CORBA::string_alloc(strlen(a.data)+strlen(b.data));
+    strcpy(sum.data,a.data);
+    strcpy(sum.data+strlen(a.data),b.data);
+  }else{
+    std::string a_(a.data);
+    std::string b_(b.data);
+    std::string sum_ = a_ + b_;
+    sum.data = sum_.c_str(); // const char*からのコピー. (char*からのコピーは不可)
+  }
+  loop++;
+  return true;
+}
+
 static const char* Server_spec[] = {
   "implementation_id", "Server",
   "type_name",         "Server",
@@ -135,6 +164,8 @@ public:
   CORBA::Long addTwoInts(CORBA::Long a, CORBA::Long b);
   CORBA::Boolean addTwoTime(const RTC::Time& a, const RTC::Time& b, RTC::Time_out sum);
   CORBA::Boolean addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq_out sum);
+  CORBA::Boolean addTwoString(const char* a, const char* b, CORBA::String_out sum);
+  CORBA::Boolean addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString_out sum);
 
   void setComponent(Server *i_component);
 private:
@@ -170,9 +201,19 @@ CORBA::Boolean ServerService_impl::addTwoTime(const RTC::Time& a, const RTC::Tim
   sum = RTC::Time();
   return component->addTwoTime(a,b,sum);
 }
+
 CORBA::Boolean ServerService_impl::addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq_out sum) {
   sum = new RTC::TimedDoubleSeq();
   return component->addTwoTimedDoubleSeq(a,b,*sum);
+}
+
+CORBA::Boolean ServerService_impl::addTwoString(const char* a, const char* b, CORBA::String_out sum) {
+  return component->addTwoString(a,b,sum);
+}
+
+CORBA::Boolean ServerService_impl::addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString_out sum) {
+  sum = new RTC::TimedString();
+  return component->addTwoTimedString(a,b,*sum);
 }
 ```
 
@@ -239,8 +280,34 @@ CORBA::Boolean Server::addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const 
   for(int i=0;i<a.data.length();i++) sum.data[i] = a.data[i] + b.data[i];
   return true;
 }
+
+CORBA::Boolean Server::addTwoString(const char*& a, const char*& b, char*& sum) {
+  sum = CORBA::string_alloc(strlen(a)+strlen(b));
+  strcpy(sum,a);
+  strcpy(sum+strlen(a),b);
+  return true;
+}
+
+int loop = 0;
+CORBA::Boolean Server::addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString& sum) {
+  // どちらの方法も可. 交互に実行するサンプル
+  if(loop % 2 == 0){
+    sum.data = CORBA::string_alloc(strlen(a.data)+strlen(b.data));
+    strcpy(sum.data,a.data);
+    strcpy(sum.data+strlen(a.data),b.data);
+  }else{
+    std::string a_(a.data);
+    std::string b_(b.data);
+    std::string sum_ = a_ + b_;
+    sum.data = sum_.c_str(); // const char*からのコピー. (char*からのコピーは不可)
+  }
+  loop++;
+  return true;
+}
 ```
 サービスの処理. これらの関数は[ServerService_impl.h](https://github.com/Naoki-Hiraoka/rtmros_beginner_tutorial/blob/master/openrtm_beginner_tutorial/sample_service_rtc/rtc/Server/ServerService_impl.h)を通じて呼ばれる.
+
+文字列型は、構造体のメンバである場合に限り`const char*`からのコピーが可能である.
 
 ```c++
 static const char* Server_spec[] = {
@@ -280,6 +347,8 @@ public:
   CORBA::Long addTwoInts(CORBA::Long a, CORBA::Long b);
   CORBA::Boolean addTwoTime(const RTC::Time& a, const RTC::Time& b, RTC::Time_out sum);
   CORBA::Boolean addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq_out sum);
+  CORBA::Boolean addTwoString(const char* a, const char* b, CORBA::String_out sum);
+  CORBA::Boolean addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString_out sum);
 ```
 `addTwoInts`, `addTwoTime`, `addTwoTimedDoubleSeq`は、idlで定義されたサービス関数をオーバーライドしている. 基本型は値渡しだが、ユーザー定義型は参照渡しとなる点に注意.
 
@@ -319,10 +388,21 @@ CORBA::Boolean ServerService_impl::addTwoTimedDoubleSeq(const RTC::TimedDoubleSe
   sum = new RTC::TimedDoubleSeq();
   return component->addTwoTimedDoubleSeq(a,b,*sum);
 }
+
+CORBA::Boolean ServerService_impl::addTwoString(const char* a, const char* b, CORBA::String_out sum) {
+  return component->addTwoString(a,b,sum);
+}
+
+CORBA::Boolean ServerService_impl::addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString_out sum) {
+  sum = new RTC::TimedString();
+  return component->addTwoTimedString(a,b,*sum);
+}
 ```
 portから各サービスが呼ばれると、これらの関数が実行される. ここでは、実際に処理を担うRTコンポーネントのメンバ関数を呼び出している.
 
 返り値は、ユーザ定義型の中でも、可変長配列が含まれない場合は参照渡しとなり、含まれる場合はポインタ渡しとなる.
+
+ポインタ渡しの場合、領域は自動的に解放されるため、`new`で獲得したポインタの領域を`delete`で開放したり文字列の領域を開放したりする必要はない.
 
 ### 1.3 Build
 
@@ -453,12 +533,28 @@ RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
     RTC::Time b2; b2.sec=2; b2.nsec=0;
     RTC::Time sum2;
     m_consumer->addTwoTime(a2,b2,sum2);
+    std::cout << "Call addTwoTime: " << a2.sec << "+" << b2.sec << "=" << sum2.sec << std::endl;
 
     RTC::TimedDoubleSeq a3; a3.data.length(3); for(size_t i=0;i<a3.data.length();i++) a3.data[i]=1;
     RTC::TimedDoubleSeq b3; b3.data.length(3); for(size_t i=0;i<b3.data.length();i++) b3.data[i]=1;
     RTC::TimedDoubleSeq* sum3;
     m_consumer->addTwoTimedDoubleSeq(a3,b3,sum3);
+    std::cout << "Call addTwoTimedDoubleSeq: " << a3.data[0] << "," << a3.data[1] << "," << a3.data[2] << " + " << b3.data[0] << "," << b3.data[1] << "," << b3.data[2] << " = "  << sum3->data[0] << "," << sum3->data[1] << "," << sum3->data[2] << std::endl;
     delete sum3;
+
+    std::string a4 = "abcde";
+    std::string b4 = "FGHIJ";
+    char* sum4;
+    m_consumer->addTwoString(a4.c_str(),b4.c_str(),sum4);
+    std::cout << "Call addTwoString: " << a4 << " + " << b4 << " = " << sum4 << std::endl;
+    CORBA::string_free(sum4);
+
+    RTC::TimedString a5; a5.data = "abcde";
+    RTC::TimedString b5; b5.data = "FGHIJ";
+    RTC::TimedString* sum5;
+    m_consumer->addTwoTimedString(a5,b5,sum5);
+    std::cout << "Call addTwoTimedString: " << a5.data << " + " << b5.data << " = " << sum5->data << std::endl;
+    delete sum5;
   }
 
   return RTC::RTC_OK;
@@ -556,17 +652,36 @@ RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
     RTC::Time b2; b2.sec=2; b2.nsec=0;
     RTC::Time sum2;
     m_consumer->addTwoTime(a2,b2,sum2);
+    std::cout << "Call addTwoTime: " << a2.sec << "+" << b2.sec << "=" << sum2.sec << std::endl;
 
     RTC::TimedDoubleSeq a3; a3.data.length(3); for(size_t i=0;i<a3.data.length();i++) a3.data[i]=1;
     RTC::TimedDoubleSeq b3; b3.data.length(3); for(size_t i=0;i<b3.data.length();i++) b3.data[i]=1;
     RTC::TimedDoubleSeq* sum3;
     m_consumer->addTwoTimedDoubleSeq(a3,b3,sum3);
+    std::cout << "Call addTwoTimedDoubleSeq: " << a3.data[0] << "," << a3.data[1] << "," << a3.data[2] << " + " << b3.data[0] << "," << b3.data[1] << "," << b3.data[2] << " = "  << sum3->data[0] << "," << sum3->data[1] << "," << sum3->data[2] << std::endl;
+    delete sum3;
+
+    std::string a4 = "abcde";
+    std::string b4 = "FGHIJ";
+    char* sum4;
+    m_consumer->addTwoString(a4.c_str(),b4.c_str(),sum4);
+    std::cout << "Call addTwoString: " << a4 << " + " << b4 << " = " << sum4 << std::endl;
+    CORBA::string_free(sum4);
+
+    RTC::TimedString a5; a5.data = "abcde";
+    RTC::TimedString b5; b5.data = "FGHIJ";
+    RTC::TimedString* sum5;
+    m_consumer->addTwoTimedString(a5,b5,sum5);
+    std::cout << "Call addTwoTimedString: " << a5.data << " + " << b5.data << " = " << sum5->data << std::endl;
+    delete sum5;
   }
 
   return RTC::RTC_OK;
 }
 ```
 `m_consumer`のメンバ関数を呼ぶ形で、サーバーにサービスコールしている. 返り値は、ユーザ定義型の中でも、可変長配列が含まれない場合は参照渡しとなり、含まれる場合はポインタ渡しとなることに注意.
+
+ポインタ渡しの場合所有権が移るため、`delete`等を用いて領域を開放する必要がある.
 
 ```c++
 static const char* Client_spec[] = {

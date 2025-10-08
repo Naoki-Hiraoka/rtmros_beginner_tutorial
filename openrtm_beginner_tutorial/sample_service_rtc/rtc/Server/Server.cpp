@@ -32,6 +32,30 @@ CORBA::Boolean Server::addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const 
   return true;
 }
 
+CORBA::Boolean Server::addTwoString(const char*& a, const char*& b, char*& sum) {
+  sum = CORBA::string_alloc(strlen(a)+strlen(b));
+  strcpy(sum,a);
+  strcpy(sum+strlen(a),b);
+  return true;
+}
+
+int loop = 0;
+CORBA::Boolean Server::addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString& sum) {
+  // どちらの方法も可. 交互に実行するサンプル
+  if(loop % 2 == 0){
+    sum.data = CORBA::string_alloc(strlen(a.data)+strlen(b.data));
+    strcpy(sum.data,a.data);
+    strcpy(sum.data+strlen(a.data),b.data);
+  }else{
+    std::string a_(a.data);
+    std::string b_(b.data);
+    std::string sum_ = a_ + b_;
+    sum.data = sum_.c_str(); // const char*からのコピー. (char*からのコピーは不可)
+  }
+  loop++;
+  return true;
+}
+
 static const char* Server_spec[] = {
   "implementation_id", "Server",
   "type_name",         "Server",

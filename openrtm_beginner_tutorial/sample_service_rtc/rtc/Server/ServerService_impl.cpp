@@ -22,8 +22,17 @@ CORBA::Boolean ServerService_impl::addTwoTime(const RTC::Time& a, const RTC::Tim
   sum = RTC::Time();
   return component->addTwoTime(a,b,sum);
 }
+
 CORBA::Boolean ServerService_impl::addTwoTimedDoubleSeq(const RTC::TimedDoubleSeq& a, const RTC::TimedDoubleSeq& b, RTC::TimedDoubleSeq_out sum) {
   sum = new RTC::TimedDoubleSeq();
   return component->addTwoTimedDoubleSeq(a,b,*sum);
 }
 
+CORBA::Boolean ServerService_impl::addTwoString(const char* a, const char* b, CORBA::String_out sum) {
+  return component->addTwoString(a,b,sum);
+}
+
+CORBA::Boolean ServerService_impl::addTwoTimedString(const RTC::TimedString& a, const RTC::TimedString& b, RTC::TimedString_out sum) {
+  sum = new RTC::TimedString();
+  return component->addTwoTimedString(a,b,*sum);
+}
