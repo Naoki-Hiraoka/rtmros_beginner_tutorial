@@ -522,7 +522,7 @@ RTC::ReturnCode_t Client::onInitialize(){
 }
 
 RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
-  if(m_consumer._ptr()){
+  if(!m_consumer._ptr()->_is_nil()){
 
     int a1=1;
     int b1=2;
@@ -638,7 +638,7 @@ RTC::ReturnCode_t Client::onInitialize(){
 
 ```c++
 RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
-  if(m_consumer._ptr()){
+  if(!m_consumer._ptr()->_is_nil()){
 ```
 サーバーと接続しているかどうかを判定している
 
