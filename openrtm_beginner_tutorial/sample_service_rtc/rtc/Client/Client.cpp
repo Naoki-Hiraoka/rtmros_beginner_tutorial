@@ -14,7 +14,9 @@ RTC::ReturnCode_t Client::onInitialize(){
 }
 
 RTC::ReturnCode_t Client::onExecute(RTC::UniqueId ec_id){
-  if(!m_consumer._ptr()->_is_nil()){
+  if(!m_consumer._ptr()->_is_nil() &&  //コンシューマにプロバイダのオブジェクト参照がセットされていない(接続されていない)状態
+     !m_consumer->_non_existent() //プロバイダのオブジェクト参照は割り当てられているが、相手のオブジェクトが非活性化 (RTC は Inactive 状態) になっている状態
+     ){
 
     int a1=1;
     int b1=2;
