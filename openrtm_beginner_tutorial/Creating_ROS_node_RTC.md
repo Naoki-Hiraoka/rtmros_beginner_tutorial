@@ -240,3 +240,8 @@ comp_args: rtprint_reader0?exec_cxt.periodic.type=PeriodicExecutionContext&exec_
 [0.000000000] RTC.Pose3D(position=RTC.Point3D(x=1.0, y=2.0, z=3.0), orientation=RTC.Orientation3D(r=0.0, p=-0.0, y=0.0))
 [0.000000000] RTC.Pose3D(position=RTC.Point3D(x=1.0, y=2.0, z=3.0), orientation=RTC.Orientation3D(r=0.0, p=-0.0, y=0.0))
 ```
+
+
+## 5. Tips
+
+OpenRTMの`RTC::TimedPose3D`内で用いられる姿勢表現はYPR型なので、上記の`tf2::Matrix3x3::getRPY`を用いる方法は間違い. 正しくは`tf2::Matrix3x3::getEulerYPR`を用いる必要があるが、`tf2::Matrix3x3::getEulerYPR`関数にはバグがある(https://github.com/ros/geometry2/issues/504 ). `Eigen::Matrix3d::eulerAngles(2,1,0)`などを使うと良い.
